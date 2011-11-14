@@ -57,29 +57,159 @@
 	&nbsp;
 </div>
 <div id="post" class="grid_8">
-	<h1 id='test_heading_1'>Test heading 1</h1>
+	<p><a href='http://www.vim.org'>Vim</a> is my preferred editor to write in, code or otherwise. Whenever I am forced to use another program to write, I feel uncomfortable and sometimes accidentally type in stuff like &#8220;dw&#8221; or &#8220;:w&#8221; and I find myself pressing <code>&lt;Esc&gt;</code> all the time.</p>
 
-<p>Lorem ipsum dolor sit amet</p>
+<p>This post will showcase the plugins I use and some of the settings in my <a href='/media/uploads/vim/vimrc.html'>vimrc</a> file which make using Vim much easier.</p>
+<h2 id='plugins'>Plugins</h2>
+<p>These are the plugins I can&#8217;t live without and which I find myself using all the time.</p>
+
+<h3 id='nerdtree'>NERDTree</h3>
+
+<p>If I can only use one plugin in Vim and had to choose which one, I&#8217;ll pick <a href='http://www.vim.org/scripts/script.php?script_id=1658'>NERDTree</a> in a heartbeat. NERDTree is a file explorer plugin that gives a &#8220;drawer&#8221; like feature in Vim. Activate it, and you get a nice file explorer on the left, so you can easily find the files you want.</p>
+
+<p>You can bookmark directories with the command <code>:Bookmark bookmark_name</code>. Now, when in the NERDTree window, pressing <code>B</code> brings up all your bookmarks. Pressing <code>cd</code> on a folder node changes the current working directory into the highlighted node.</p>
+
+<p><img alt='NERDTree' src='/media/images/blog///NERDTree.png' /></p>
+
+<h3 id='minibufexpl'>MiniBufExpl</h3>
+
+<p>Managing buffers is probably the most confusing aspect of Vim. I still don&#8217;t quite understand how to manage them, to be honest. But that&#8217;s what <a href='https://github.com/fholgado/minibufexpl.vim'>MiniBufExpl</a> is for. It arranges your buffers in a row on the top of the window like tabs in a browser or other editors. Everytime you open a file and start a new buffer, it is listed on top. You can then press <code>&lt;Ctrl-Tab&gt;</code> and <code>&lt;Ctrl-Shift-Tab&gt;</code> to cycle between them. And since the plugin displays the buffer number beside the its name, you can use the <code>:bN</code> command to quickly switch to a buffer number (where <code>N</code> is the number).<br />The plugin also highlights buffers which have unsaved changes in them, which can be very handy when you&#8217;re editing a lot of files.</p>
+
+<p><img alt='MiniBufExpl' src='/media/images/blog///MiniBufExpl.png' /></p>
+
+<h3 id='bclose'>Bclose</h3>
+
+<p><a href='http://vim.wikia.com/wiki/Deleting_a_buffer_without_closing_the_window#Script'>Bclose</a> is another plugin which helps with buffer management. It offers an easy way to easily close buffers and when the last buffer is closed, it creates a &#8220;scratch&#8221; buffer in place of the last one. It makes Vim act more like other editors you may be used to.</p>
+
+<p>Calling <code>:Bclose</code> closes the current buffer and opens the next available one or creates a &#8220;scratch&#8221; or empty buffer if it can&#8217;t find the next one. I mapped <code>:Bclose</code> to <code>&lt;leader&gt;x</code> so I can easily close buffers with a simple keystroke.</p>
+
+<h3 id='surround_and_repeat'>Surround and Repeat</h3>
+
+<p><a href='http://www.vim.org/scripts/script.php?script_id=1697'>Surround</a> offers shortcuts to easily surround words with parentheses, quotes and even HTML tags. (e.g. Typing <code>ysiw&quot;</code> surrounds the current word with quotes and <code>ysiw&lt;tag&gt;</code> surrounds the word with <code>&lt;tag&gt;&lt;/tag&gt;</code> tags. <code>ds&lt;tag&gt;</code> deletes the nearest surrounding <code>&lt;tag&gt;&lt;/tag&gt;</code>.)</p>
+
+<p><a href='http://www.vim.org/scripts/script.php?script_id=2136'>Repeat</a> extends the default <code>.</code> or &#8220;repeat&#8221; command in Vim so it can be used with Surround, among other things.</p>
+
+<h3 id='easymotion'>EasyMotion</h3>
+
+<p>As if Vim&#8217;s movement keys weren&#8217;t good enough, <a href='https://github.com/Lokaltog/vim-easymotion'>EasyMotion</a> is a very welcome addition to my setup. It provides quicker movement by allowing you to &#8220;pinpoint&#8221; the location you want to place your cursor. The <a href='https://d3nwyuy0nl342s.cloudfront.net/img/311e2034c078b3d7a53497020cda7b3bedda249d/687474703a2f2f6f6935342e74696e797069632e636f6d2f3279797365666d2e6a7067'>animation</a> on the project page probably does a better job at showing what I mean.</p>
+
+<p><img alt='EasyMotion' src='/media/images/blog///EasyMotion.png' /></p>
+
+<h3 id='pathogen'>Pathogen</h3>
+
+<p><a href='http://www.vim.org/scripts/script.php?script_id=2332'>Pathogen</a> provides an easy way to manage your plugins by allowing you to place each plugin in their own folder. Pathogen then appends each plugin&#8217;s folder to Vim&#8217;s path so they can be loaded and used. It has also given me the opportunity to clean up my <code>~/.vim</code> folder and to upload it to <a href='https://bitbucket.org/john2x/dotfiles'>Bitbucket</a> and <a href='https://github.com/john2x/dotfiles'>Github</a>.</p>
+
+<p><img alt='Pathogen' src='/media/images/blog///Pathogen.png' /></p>
+
+<h3 id='other_plugins'>Other Plugins</h3>
+
+<p>These are plugins I have installed but I rarely use, if at all.</p>
 
 <ul>
-<li>list 1</li>
+<li><a href='http://www.vim.org/scripts/script.php?script_id=2975'>Fugitive</a> - A plugin for using Git within Vim. I&#8217;m switching over to Mercurial but I still use Git from time to time.</li>
 
-<li>list 2</li>
+<li><a href='http://www.vim.org/scripts/script.php?script_id=2540'>SnipMate</a> - Allows you to create and use snippets to quickly generate pieces of code. I don&#8217;t know why I don&#8217;t use this much, probably because I could never remember its key bindings.</li>
 
-<li>list 3</li>
+<li><a href='http://www.vim.org/scripts/script.php?script_id=2050'>LustyJuggler</a> - Another buffer management plugin. Allows for faster switching between open buffers. I find myself using <code>:bN</code> most of the time though.</li>
+
+<li><a href='http://www.vim.org/scripts/script.php?script_id=273'>Taglist</a> - A source code browser. I mapped it to <code>&lt;F4&gt;</code> to get a quick overview of a piece of code.</li>
+</ul>
+<h2 id='vimrc'>My vimrc</h2>
+<p>My <a href='/media/uploads/vim/vimrc.html'>vimrc</a> file is an edited version of &#8220;the ultimate vimrc file&#8221; found <a href='http://amix.dk/vim/vimrc.html'>here</a>. A fitting title indeed.</p>
+
+<p>Here are the settings which I&#8217;ve added or I find quite interesting or useful.</p>
+
+<h3 id='scroll_using_the_spacebar'>Scroll using the spacebar</h3>
+
+<p>I added this to simulate smooth scrolling by pressing <code>&lt;Space&gt;</code> or <code>&lt;Shift-Space&gt;</code>, just like in a browser.</p>
+
+<pre><code>map &lt;S-Space&gt; &lt;C-Y&gt;&lt;C-Y&gt;&lt;C-Y&gt;&lt;C-Y&gt;&lt;C-Y&gt;&lt;C-Y&gt;&lt;C-Y&gt;&lt;C-Y&gt;&lt;C-Y&gt;&lt;C-Y&gt;&lt;C-Y&gt;
+map &lt;Space&gt; &lt;C-E&gt;&lt;C-E&gt;&lt;C-E&gt;&lt;C-E&gt;&lt;C-E&gt;&lt;C-E&gt;&lt;C-E&gt;&lt;C-E&gt;&lt;C-E&gt;&lt;C-E&gt;&lt;C-E&gt;</code></pre>
+
+<p>The smooth part only seems to work in GVim on Windows though.</p>
+
+<h3 id='hotkeys'>Hotkeys</h3>
+
+<p>Some mappings to plugins and functions and other stuff which I use often.</p>
+
+<ul>
+<li>
+<p><code>&lt;F3&gt;</code> is mapped to toggle NERDTree</p>
+</li>
+
+<li>
+<p><code>&lt;F4&gt;</code> is mapped to toggle Taglist</p>
+</li>
+
+<li>
+<p><code>&lt;F5&gt;</code> is mapped to insert the current timestamp</p>
+</li>
+
+<li>
+<p><code>&lt;leader&gt;ev</code> opens up my .vimrc file for quick edits</p>
+</li>
+
+<li>
+<p><code>&lt;leader&gt;x</code> is mapped to <code>:Bclose</code> to easily close files</p>
+</li>
+
+<li>
+<p><code>&lt;leader&gt;cd</code> switch to the directory of the current file or buffer</p>
+</li>
+
+<li>
+<p>when editing certain filetypes (Java), <code>;</code> inserts a semicolon at the end of the line</p>
+
+<p>map <pre class='markdown-html-error' style='border: solid 3px red; background-color: pink'>REXML could not parse this XML/HTML: 
+&lt;F3&gt; :NERDTreeToggle&lt;CR&gt;&lt;CR&gt;</pre></p>
+
+<p>map <pre class='markdown-html-error' style='border: solid 3px red; background-color: pink'>REXML could not parse this XML/HTML: 
+&lt;F4&gt; :TlistToggle&lt;CR&gt;&lt;CR&gt;</pre></p>
+
+<p>nmap <pre class='markdown-html-error' style='border: solid 3px red; background-color: pink'>REXML could not parse this XML/HTML: 
+&lt;F5&gt; a&lt;C-R&gt;=strftime(&quot;%Y-%m-%d %I:%M:%S&quot;)&lt;CR&gt;&lt;Esc&gt;
+  imap &lt;F5&gt; &lt;C-R&gt;=strftime(&quot;%Y-%m-%d %I:%M:%S&quot;)&lt;CR&gt;</pre></p>
+
+<p>map <pre class='markdown-html-error' style='border: solid 3px red; background-color: pink'>REXML could not parse this XML/HTML: 
+&lt;leader&gt;ev :e! ~/.vimrc&lt;cr&gt;</pre></p>
+
+<p>map <pre class='markdown-html-error' style='border: solid 3px red; background-color: pink'>REXML could not parse this XML/HTML: 
+&lt;leader&gt;cd :cd %:p:h&lt;cr&gt;</pre></p>
+
+<p>au FileType java silent noremap ; <pre class='markdown-html-error' style='border: solid 3px red; background-color: pink'>REXML could not parse this XML/HTML: 
+&lt;Esc&gt;mcA;&lt;Esc&gt;`c</pre></p>
+</li>
 </ul>
 
-<p>When I am mentioning <code>code snippets</code> it should look nice.</p>
+<h3 id='switching_between_windows'>Switching between windows</h3>
 
-<pre><code>What pygment to use???</code></pre>
+<p>Easily switch windows by pressing <code>&lt;Ctrl&gt;</code> + the direction of the window you want.</p>
 
-<blockquote>
-<p>quotes?</p>
-</blockquote>
+<pre><code>map &lt;C-j&gt; &lt;C-W&gt;j
+map &lt;C-k&gt; &lt;C-W&gt;k
+map &lt;C-h&gt; &lt;C-W&gt;h
+map &lt;C-l&gt; &lt;C-W&gt;l</code></pre>
 
-<p><em>italics</em> <strong>emphasis</strong></p>
+<h3 id='toggle_80_column_marker'>Toggle 80 Column Marker</h3>
 
-<h2 id='heading_2'>heading 2</h2>	
+<p>I like to keep my Python code under 80 characters per line. And since the marker is a little distracting, I wanted an easy way to toggle it on or off. I made a little function to do just that and mapped it to <code>&lt;F2&gt;</code> to quickly check my bounds.</p>
+
+<pre><code>&quot; Toggle 80 column marker
+nnoremap &lt;F2&gt; :call ToggleColorColumn()&lt;CR&gt;
+
+func! ToggleColorColumn()
+	if exists(&quot;b:colorcolumnon&quot;) &amp;&amp; b:colorcolumnon
+		let b:colorcolumnon = 0
+		exec &#39;:set colorcolumn=0&#39;
+		echo &#39;80 column marker off&#39;
+	else
+		let b:colorcolumnon = 1
+		exec &#39;:set colorcolumn=80&#39;
+		echo &#39;80 column marker on&#39;
+	endif	
+endfunc</code></pre>
+
+<p>You can now view my Vim setup on <a href='https://github.com/john2x/dotfiles'>Github</a> or <a href='https://bitbucket.org/john2x/dotfiles'>Bitbucket</a>.</p>	
 </div>
 <div class="grid_2">
 	&nbsp;
