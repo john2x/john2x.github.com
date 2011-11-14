@@ -2,9 +2,36 @@
 layout: static
 title: Blog
 ---
-<ul>
+<ul id="post-list">
 {% for post in site.categories.blog %}
-<li><a href="{{ post.url }}">{{ post.title }}</a><abbr>{{post.date | date_to_string }}</abbr></li>
+<li><h3><a href="{{ post.url }}">{{ post.title }}</a></h3> <small>written {{post.date | date_to_string }}</small></li>
 {% endfor %}
 </ul>
 
+{% comment %}
+<div class="grid_2">&nbsp;</div>
+
+<div class="grid_2">
+<ul id="post-list">
+{% for post in site.categories.blog %}
+	{% assign i = forloop.index | divided_by:2 %}
+	{% if i != 0 or i == 1 %}
+	<li><h3><a href="{{ post.url }}">{{i}}{{ post.title }}</a></h3> <small>written {{post.date | date_to_string }}</small></li>
+	{% endif %}
+{% endfor %}
+</ul>
+</div>
+
+<div class="grid_2">
+<ul id="post-list">
+{% for post in site.categories.blog %}
+	{% assign i = forloop.index | divided_by:2 %}
+	{% if i == 0 %}
+	<li><h3><a href="{{ post.url }}">{{ post.title }}</a></h3> <small>written {{post.date | date_to_string }}</small></li>
+	{% endif %}
+{% endfor %}
+</ul>
+</div>
+
+<div class="grid_2">&nbsp;</div>
+{% endcomment %}

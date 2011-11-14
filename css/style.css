@@ -299,6 +299,15 @@ footer {
 }
 
 
+#post-list {
+	text-align: center;
+	list-style: none;
+	list-style-position: inside;
+}
+
+#post-list li {
+	margin-left: -38px;
+}
 
 
 

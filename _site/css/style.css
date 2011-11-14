@@ -235,20 +235,23 @@ h1 {
 	margin-bottom: 0;
 	text-shadow: 0px 2px 0px #fff;
 }
+
 h2 {
 	font: 40px/48px "LeagueGothicRegular", Helvetica, Arial, sans-serif;
 	letter-spacing: 0;
 	margin-bottom: 0;
 	text-shadow: 0px 2px 0px #fff;
 }
+
 h3 {
 	font: 30px/38px "LeagueGothicRegular", Helvetica, Arial, sans-serif;
 	letter-spacing: 0;
 	margin-bottom: 0;
 	text-shadow: 0px 2px 0px #fff;
 }
-p {
-	line-height: 20px;
+
+p, ul li{
+	line-height: 24px;
 	font-family: Georgia, Times, serif;
 }
 
@@ -296,6 +299,15 @@ footer {
 }
 
 
+#post-list {
+	text-align: center;
+	list-style: none;
+	list-style-position: inside;
+}
+
+#post-list li {
+	margin-left: -38px;
+}
 
 
 

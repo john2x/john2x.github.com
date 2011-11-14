@@ -2,9 +2,9 @@
 layout: static
 title: Projects
 ---
-<ul>
+<ul id="post-list">
 {% for post in site.categories.projects %}
-<li><a href="{{ post.url }}">{{ post.title }}</a><abbr>{{post.date | date_to_string }}</abbr></li>
+<li><h3><a href="{{ post.url }}">{{ post.title }}</a></h3> <small>written {{post.date | date_to_string }}</small></li>
 {% endfor %}
 </ul>
 

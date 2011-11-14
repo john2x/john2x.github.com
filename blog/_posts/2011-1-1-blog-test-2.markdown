@@ -1,5 +1,5 @@
 ---
-title: Blog Test
+title: Blog Test With Long Title
 layout: post
 category: blog
 ---
