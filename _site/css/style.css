@@ -265,9 +265,6 @@ header ul li {
 	display: inline;
 }
 
-header h1 {
-}
-
 header h1 a {
 	text-decoration: none;
 }
@@ -275,10 +272,6 @@ header h1 a {
 header h1 a:hover {
 	text-decoration: none;
 	color: black;
-}
-
-/* Style my name */
-header h1 {
 }
 
 header p {
@@ -295,6 +288,11 @@ header p a {
 
 #main li a {
 	text-decoration: none;
+}
+
+footer {
+	margin-top: 40px;
+	text-align: center;
 }
 
 
