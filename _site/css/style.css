@@ -211,6 +211,12 @@ td { vertical-align: top; }
    Author: John Louis Del Rosario
    ========================================================================== */
 
+body {
+	font-size: 16px;
+	margin-top: 20px;
+	background: url("../images/ricepaper2.png") repeat;
+}
+
 a, a:visited {
 	color: black;
 }
@@ -221,6 +227,29 @@ a:hover {
 
 header {
 	text-align: center;
+}
+
+h1 {
+	font: 60px/68px "LeagueGothicRegular", Helvetica, Arial, sans-serif;
+	letter-spacing: 0;
+	margin-bottom: 0;
+	text-shadow: 0px 2px 0px #fff;
+}
+h2 {
+	font: 40px/48px "LeagueGothicRegular", Helvetica, Arial, sans-serif;
+	letter-spacing: 0;
+	margin-bottom: 0;
+	text-shadow: 0px 2px 0px #fff;
+}
+h3 {
+	font: 30px/38px "LeagueGothicRegular", Helvetica, Arial, sans-serif;
+	letter-spacing: 0;
+	margin-bottom: 0;
+	text-shadow: 0px 2px 0px #fff;
+}
+p {
+	line-height: 20px;
+	font-family: Georgia, Times, serif;
 }
 
 header ul {
@@ -237,7 +266,6 @@ header ul li {
 }
 
 header h1 {
-	font-size: 32px;
 }
 
 header h1 a {
@@ -251,14 +279,23 @@ header h1 a:hover {
 
 /* Style my name */
 header h1 {
-	text-shadow: 0px 1px 0px #e5e5ee;
 }
 
 header p {
-	font-family: serif;
 	font-style: italic;
 }
 
+header p a {
+	text-decoration: none;
+}
+
+#main li {
+	font-weight: bold;
+}
+
+#main li a {
+	text-decoration: none;
+}
 
 
 
