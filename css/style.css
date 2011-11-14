@@ -244,8 +244,20 @@ header h1 a {
 	text-decoration: none;
 }
 
+header h1 a:hover {
+	text-decoration: none;
+	color: black;
+}
 
+/* Style my name */
+header h1 {
+	text-shadow: 0px 1px 0px #e5e5ee;
+}
 
+header p {
+	font-family: serif;
+	font-style: italic;
+}
 
 
 
