@@ -208,11 +208,41 @@ td { vertical-align: top; }
 
 
 /* ==|== primary styles =====================================================
-   Author: 
+   Author: John Louis Del Rosario
    ========================================================================== */
 
+a, a:visited {
+	color: black;
+}
 
+a:hover {
+	color: gray;
+}
 
+header {
+	text-align: center;
+}
+
+header ul {
+	margin-left: 0;
+	padding-left: 0;
+	display: inline;
+}
+header ul li {
+	margin-left: 0;
+	margin-bottom: 0;
+	padding: 2px 15px 5px;
+	list-style: none;
+	display: inline;
+}
+
+header h1 {
+	font-size: 32px;
+}
+
+header h1 a {
+	text-decoration: none;
+}
 
 
 
@@ -289,10 +319,6 @@ td { vertical-align: top; }
   @page { margin: 0.5cm; }
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3 { page-break-after: avoid; }
-}
-
-header {
-	text-align: center;
 }
 
 
