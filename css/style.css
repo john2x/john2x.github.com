@@ -314,6 +314,7 @@ code, pre {
 	font-size: 12px;
 	background-color: #F2E4DC;
 	border-radius: 4px;
+	-moz-border-radius: 4px;
 }
 
 code {
