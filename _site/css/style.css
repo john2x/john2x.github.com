@@ -296,6 +296,7 @@ header p a {
 footer {
 	margin-top: 40px;
 	text-align: center;
+	margin-bottom: 20px;
 }
 
 
@@ -309,9 +310,19 @@ footer {
 	margin-left: -38px;
 }
 
+code, pre {
+	font-size: 12px;
+	background-color: #F2E4DC;
+	border-radius: 4px;
+}
 
+code {
+	padding: 2px;
+}
 
-
+pre {
+	padding: 8px;
+}
 
 
 

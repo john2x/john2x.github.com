@@ -2,4 +2,5 @@ auto: true
 pygments: true
 server: 127.0.0.1
 permalink: /:categories/:year/:title
+markdown: kramdown
 
