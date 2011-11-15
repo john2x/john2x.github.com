@@ -215,6 +215,7 @@ body {
 	font-size: 16px;
 	margin-top: 20px;
 	background: url("../images/ricepaper2.png") repeat;
+	font-family: Georgia, Times, serif;
 }
 
 a, a:visited {
@@ -252,7 +253,6 @@ h3 {
 
 p, ul li{
 	line-height: 24px;
-	font-family: Georgia, Times, serif;
 }
 
 header ul {
@@ -277,8 +277,16 @@ header h1 a:hover {
 	color: black;
 }
 
+header h1.title {
+	font-family: 'Lobster Two', Georgia, Times, serif;
+	font-style: italic;
+	font-size: 36px;
+}
+
 header p {
 	font-style: italic;
+	font-family: 'Lobster Two', Georgia, Times, serif;
+	font-size: 16px;
 }
 
 header p a {
@@ -314,6 +322,7 @@ code, pre {
 	font-size: 12px;
 	background-color: #F2E4DC;
 	border-radius: 4px;
+	-moz-border-radius: 4px;
 }
 
 code {
