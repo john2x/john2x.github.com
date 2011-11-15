@@ -318,6 +318,15 @@ footer {
 	margin-left: -38px;
 }
 
+#post-content img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	border: double 4px #c5c5c5;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
 code, pre {
 	font-size: 12px;
 	background-color: #F2E4DC;
