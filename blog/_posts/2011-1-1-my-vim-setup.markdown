@@ -75,8 +75,8 @@ Here are the settings which I've added or I find quite interesting or useful.
 I added this to simulate smooth scrolling by pressing `<Space>` or `<Shift-Space>`, just like in a browser. 
 
 {% highlight vim %}
-	map <S-Space> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
-	map <Space> <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
+map <S-Space> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
+map <Space> <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
 {% endhighlight %}
 
 The smooth part only seems to work in GVim on Windows though. 
@@ -94,13 +94,13 @@ Some mappings to plugins and functions and other stuff which I use often.
 - when editing certain filetypes (Java), `;` inserts a semicolon at the end of the line 
 
 {% highlight vim %}
-	map <F3> :NERDTreeToggle<CR><CR>
-	map <F4> :TlistToggle<CR><CR>
-	nmap <F5> a<C-R>=strftime("%Y-%m-%d %I:%M:%S")<CR><Esc>
-	imap <F5> <C-R>=strftime("%Y-%m-%d %I:%M:%S")<CR>
-	map <leader>ev :e! ~/.vimrc<cr>
-	map <leader>cd :cd %:p:h<cr>
-	au FileType java silent noremap ; <Esc>mcA;<Esc>`c
+map <F3> :NERDTreeToggle<CR><CR>
+map <F4> :TlistToggle<CR><CR>
+nmap <F5> a<C-R>=strftime("%Y-%m-%d %I:%M:%S")<CR><Esc>
+imap <F5> <C-R>=strftime("%Y-%m-%d %I:%M:%S")<CR>
+map <leader>ev :e! ~/.vimrc<cr>
+map <leader>cd :cd %:p:h<cr>
+au FileType java silent noremap ; <Esc>mcA;<Esc>`c
 {% endhighlight %}
 
 ### Switching between windows ###
@@ -108,10 +108,10 @@ Some mappings to plugins and functions and other stuff which I use often.
 Easily switch windows by pressing `<Ctrl>` + the direction of the window you want. 
 
 {% highlight vim %}
-	map <C-j> <C-W>j
-	map <C-k> <C-W>k
-	map <C-h> <C-W>h
-	map <C-l> <C-W>l
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
 {% endhighlight %}
 
 ### Toggle 80 Column Marker ###
@@ -119,20 +119,20 @@ I like to keep my Python code under 80 characters per line. And since the marker
 I made a little function to do just that and mapped it to `<F2>` to quickly check my bounds.
 
 {% highlight vim %}
-	" Toggle 80 column marker
-	nnoremap <F2> :call ToggleColorColumn()<CR>
+" Toggle 80 column marker
+nnoremap <F2> :call ToggleColorColumn()<CR>
 
-	func! ToggleColorColumn()
-		if exists("b:colorcolumnon") && b:colorcolumnon
-			let b:colorcolumnon = 0
-			exec ':set colorcolumn=0'
-			echo '80 column marker off'
-		else
-			let b:colorcolumnon = 1
-			exec ':set colorcolumn=80'
-			echo '80 column marker on'
-		endif	
-	endfunc
+func! ToggleColorColumn()
+	if exists("b:colorcolumnon") && b:colorcolumnon
+		let b:colorcolumnon = 0
+		exec ':set colorcolumn=0'
+		echo '80 column marker off'
+	else
+		let b:colorcolumnon = 1
+		exec ':set colorcolumn=80'
+		echo '80 column marker on'
+	endif	
+endfunc
 {% endhighlight %}
 
 You can now view my Vim setup on [Github][gitdotfiles] or [Bitbucket][hgdotfiles].
