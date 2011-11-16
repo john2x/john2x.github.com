@@ -1,5 +1,5 @@
 ---
-title: Sunrise: A WordPress Theme
+title: "Sunrise: A WordPress Theme"
 layout: post
 category: blog
 ---

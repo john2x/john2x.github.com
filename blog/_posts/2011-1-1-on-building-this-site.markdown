@@ -33,11 +33,11 @@ Like I've said, [Hyde][hyde] didn't come with a lot of tutorials. The docs weren
 ### Installing Hyde
 Installing Hyde wasn't as smooth as I hoped it would be. First, get the source by cloning it from [Github](https://github.com/lakshmivyas/hyde), or, if you don't know git, download the [zip](https://github.com/lakshmivyas/hyde/zipball/master) or [tarball](https://github.com/lakshmivyas/hyde/tarball/master). 
 Install Hyde using 
-{% highlight %}$ python path/to/hyde/setup.py install{% endhighlight %} 
+{% highlight sh %}$ python path/to/hyde/setup.py install{% endhighlight %} 
 Afterwards, install it's requirements found in the `requirements.txt` file. Install them using pip by 
-{% highlight %}$ pip install -r path/to/hyde/requirements.txt{% endhighlight %}
+{% highlight sh %}$ pip install -r path/to/hyde/requirements.txt{% endhighlight  %}
 If all goes well, Hyde should be installed in your virtual environment (or system). Test it by creating a new Hyde project with the command 
-{% highlight %}$ hyde -i -s path/to/your/site{% endhighlight%}
+{% highlight sh %}$ hyde -i -s path/to/your/site{% endhighlight %}
 
 On my first attempt, Hyde gave me an error complaining about not finding templates. It turned out that somehow setup.py failed to copy the templates folder into my virtual environment. I don't know if this was just a one time thing, but if the same thing happens to you simply copy the templates folder (`hyde/templates/`) into your site-packages. 
 
@@ -56,7 +56,7 @@ Hyde uses "listing" pages for archives and similar features. Listing pages are b
 
 ### Markdown
 My favorite feature of Hyde has got to be the built-in support for [Markdown](http://daringfireball.net/projects/markdown/). It makes writing articles a breeze. The [sytax docs](http://daringfireball.net/projects/markdown/syntax) in the Markdown homepage should be enough to get you started. Just install Markdown with pip 
-{% highlight %}
+{% highlight sh %}
 $ pip install markdown
 {% endhighlight %}
 and you are good to go. 
@@ -64,11 +64,11 @@ and you are good to go.
 ### Clean URL's
 To enable clean URL's on your site, just set `GENERATE_CLEAN_URLS` to `True` in `settings.py`. You need to run your site on a server though for clean URL's to work, but Hyde has that covered as well. 
 Hyde uses [CherryPy][] as a testing server, so go ahead and install that as well. 
-{% highlight %}
+{% highlight sh %}
 $ pip install cherrypy
 {% endhighlight %}
 Then run the server via
-{% highlight %}
+{% highlight sh %}
 $ hyde -g -w -s path/to/your/site -k
 {% endhighlight %}
 and point your browser to `http://localhost:8080/` to see your site running on CherryPy. Just make sure the paths in your `settings.py` are correct. 

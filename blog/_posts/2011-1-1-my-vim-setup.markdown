@@ -107,7 +107,7 @@ Some mappings to plugins and functions and other stuff which I use often.
 
 Easily switch windows by pressing `<Ctrl>` + the direction of the window you want. 
 
-{% highlight %}
+{% highlight vim %}
 	map <C-j> <C-W>j
 	map <C-k> <C-W>k
 	map <C-h> <C-W>h
