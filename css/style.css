@@ -283,10 +283,10 @@ header h1.title {
 	font-size: 36px;
 }
 
-header p {
+header p, .desc {
 	font-style: italic;
 	font-family: 'Lobster Two', Georgia, Times, serif;
-	font-size: 16px;
+	font-size: 18px;
 }
 
 header p a {
@@ -343,7 +343,6 @@ code {
 pre {
 	padding: 8px;
 }
-
 
 
 /* ==|== non-semantic helper classes ========================================

@@ -1,0 +1,14 @@
+---
+title: doqdoq
+layout: post
+category: projects
+description: Simple image sharing website built with Django.
+---
+## What is doqdoq.com?
+It is a free service to host your images. You will be able to share your images across social networking sites like Facebook and Twitter. Hot-linking to images is also allowed. Try it out at [doqdoq.com]( http://doqdoq.com ).
+
+Built in collaboration with my [brother][] on the [Django][] web framework. 
+
+[brother]: http://blog.ekini.net
+[Django]: http://djangoproject.com
+
