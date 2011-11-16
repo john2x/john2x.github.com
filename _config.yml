@@ -12,7 +12,7 @@ future:      true
 lsi:         false
 pygments:    false
 markdown:    rdiscount
-permalink:   /:categories/:year/:title
+permalink:   /:categories/:title
 
 maruku:
   use_tex:    false
