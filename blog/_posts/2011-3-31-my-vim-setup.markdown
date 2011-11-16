@@ -18,7 +18,7 @@ If I can only use one plugin in Vim and had to choose which one, I'll pick [NERD
 
 You can bookmark directories with the command `:Bookmark bookmark_name`. Now, when in the NERDTree window, pressing `B` brings up all your bookmarks. Pressing `cd` on a folder node changes the current working directory into the highlighted node. 
 
-![NERDTree]({{site.github}}images{{page.url}}/NERDTree.png)
+![NERDTree]({{site.repo}}images{{page.url}}/NERDTree.png)
 
 ### MiniBufExpl ###
 
@@ -27,7 +27,7 @@ It arranges your buffers in a row on the top of the window like tabs in a browse
 Everytime you open a file and start a new buffer, it is listed on top. You can then press `<Ctrl-Tab>` and `<Ctrl-Shift-Tab>` to cycle between them. And since the plugin displays the buffer number beside the its name, you can use the `:bN` command to quickly switch to a buffer number (where `N` is the number).  
 The plugin also highlights buffers which have unsaved changes in them, which can be very handy when you're editing a lot of files. 
 
-![MiniBufExpl]({{site.github}}images{{page.url}}/MiniBufExpl.png)
+![MiniBufExpl]({{site.repo}}images{{page.url}}/MiniBufExpl.png)
 
 ### Bclose ###
 
@@ -45,14 +45,14 @@ Calling `:Bclose` closes the current buffer and opens the next available one or 
 
 As if Vim's movement keys weren't good enough, [EasyMotion][] is a very welcome addition to my setup. It provides quicker movement by allowing you to "pinpoint" the location you want to place your cursor. The [animation][easymotionanimation] on the project page probably does a better job at showing what I mean. 
 
-![EasyMotion]({{site.github}}images{{page.url}}/EasyMotion.png)
+![EasyMotion]({{site.repo}}images{{page.url}}/EasyMotion.png)
 
 ### Pathogen ###
 
 [Pathogen][] provides an easy way to manage your plugins by allowing you to place each plugin in their own folder. Pathogen then appends each plugin's folder to Vim's path so they can be loaded and used. 
 It has also given me the opportunity to clean up my `~/.vim` folder and to upload it to [Bitbucket][hgdotfiles] and [Github][gitdotfiles].
 
-![Pathogen]({{site.github}}images{{page.url}}/Pathogen.png)
+![Pathogen]({{site.repo}}images{{page.url}}/Pathogen.png)
 
 ### Other Plugins ###
 

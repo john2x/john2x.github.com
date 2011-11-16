@@ -35,15 +35,15 @@ Read the [blog post][blogpost] for a more detailed writeup.
 <h2 id="screenshots">Screenshots</h2>
 ![Homepage]({{site.url}}/media/images/projects/{{page.page_name}}/index.png)
 
-![Post with info]({{site.url}}/media/images/projects/{{page.page_name}}/single-with-info.png)
+![Post with info]({{site.repo}}images{{page.url}}/single-with-info.png)
 
-![Post with info hidden]({{site.url}}/media/images/projects/{{page.page_name}}/single-no-info.png)
+![Post with info hidden]({{site.repo}}images{{page.url}}/single-no-info.png)
 
-![Sample page]({{site.url}}/media/images/projects/{{page.page_name}}/page.png)
+![Sample page]({{site.repo}}images{{page.url}}/page.png)
 
 [blogpost]: {{site.url}}/blog/2011/sunrise-a-wordpress-theme
-[Bitbucket]: {{links.bitbucket}}/sunrise
-[Github]: {{links.github}}/sunrise
-[Download]: {{links.bitbucket}}/sunrise/get/v1.1.0.zip
+[Bitbucket]: {{site.bitbucket}}/sunrise
+[Github]: {{site.github}}/sunrise
+[Download]: {{site.bitbucket}}/sunrise/get/v1.1.0.zip
 [demo]: {{site.url}}/wordpress
 

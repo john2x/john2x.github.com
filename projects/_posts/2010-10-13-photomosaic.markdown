@@ -22,23 +22,23 @@ With the image pool ready, the program subdivides the source image into tiles (c
 
 Matching the colors isn't done simply by comparing the average colors of the whole tile. When comparing a source tile with a pool tile, the source tile is further subdivided into a 3&times;3 matrix. *Then* the comparison can begin. Computing the average colors of each subtile in the 3&times;3 matrix with the data in the image pool database (which also holds the average colors of the 3&times;3 matrix of each pool tile), the program can find the best matching pool tile to place. Of course, increasing this second subdivision could greatly improve the matching capabilities of the software. That would have to be something for me to work on next. 
 
-![First Result]({{site.url}}/media/images/projects/{{page.page_name}}/photomosaic3.jpg)
+![First Result]({{site.repo}}images{{page.url}}/photomosaic3.jpg)
 
 The first results were barely recognizable. All the best matching tiles were placed in the top right corner of the image, since that's where the program starts traversing. And since it only uses each pool tile once, it leaves the rest of the image to receive "leftovers". I resolved this by starting in the center, where the best pool tiles could be used where it was needed most, the face in a portrait. 
 
-![Second Result]({{site.url}}/media/images/projects/{{page.page_name}}/photomosaic1.jpg)
+![Second Result]({{site.repo}}images{{page.url}}/photomosaic1.jpg)
 
 Much better. If I had a better pool, maybe it could be better. 
 
 <h2 id="results">Results</h2>
 
-![Result 1]({{site.url}}/media/images/projects/{{page.page_name}}/photomosaic2.jpg)
+![Result 1]({{site.repo}}images{{page.url}}/photomosaic2.jpg)
 
-![Result 2]({{site.url}}/media/images/projects/{{page.page_name}}/photomosaic4.jpg)
+![Result 2]({{site.repo}}images{{page.url}}/photomosaic4.jpg)
 
-![Result 3]({{site.url}}/media/images/projects/{{page.page_name}}/photomosaic5.jpg)
+![Result 3]({{site.repo}}images{{page.url}}/photomosaic5.jpg)
 
-![Result 4]({{site.url}}/media/images/projects/{{page.page_name}}/photomosaic6.jpg)
+![Result 4]({{site.repo}}images{{page.url}}/photomosaic6.jpg)
 
 <h2 id="improvements">Improvements</h2>
 

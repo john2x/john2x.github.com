@@ -30,9 +30,9 @@ You can email john2x at gmail.com
 Screenshots
 -----
 
-![Kodig]({{site.url}}/media/images/projects/{{page.page_name}}/kodig.png)
+![Kodig]({{site.repo}}images{{page.url}}/kodig.png)
 
-![New Post]({{site.url}}/media/images/projects/{{page.page_name}}/kodig-new.png)
+![New Post]({{site.repo}}images{{page.url}}/kodig-new.png)
 
-![Post]({{site.url}}/media/images/projects/{{page.page_name}}/kodig-post.png)
+![Post]({{site.repo}}images{{page.url}}/kodig-post.png)
 

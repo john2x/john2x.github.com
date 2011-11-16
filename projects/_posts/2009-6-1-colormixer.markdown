@@ -12,7 +12,7 @@ Basically I just wanted to be able to mix colors using RGB and HSV sliders to ge
 Eventually I gave up on searching and decided to just build my own. I was learning Flex then and I thought that it would be a good project to learn with. Unfortunately, it is impossible to get any color from the screen outside the stage with Flash. AIR, at that time, also didn't have any such features. 
 
 ## Screenshots
-![John's Color Mixer]({{site.url}}{{links.images_projects}}{{page.page_name}}/colormixer.jpg "John's Color Mixer") 
+![John's Color Mixer]({{site.repo}}images{{page.url}}/colormixer.jpg "John's Color Mixer") 
 
 ## Try it Out
 [John's Color Mixer](http://john2x.com/media/uploads/ColorManipulation/ColorMixer.html)

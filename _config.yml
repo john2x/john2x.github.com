@@ -39,5 +39,7 @@ kramdown:
     coderay_bold_every: 10
     coderay_css: style
 
-github: https://github.com/john2x/john2x.github.com/raw/master/
+repo: https://github.com/john2x/john2x.github.com/raw/master/
+github: https://github.com/john2x
+bitbucket: https://bitbucket.org/john2x
 

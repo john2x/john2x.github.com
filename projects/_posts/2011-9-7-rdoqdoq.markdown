@@ -18,14 +18,14 @@ Read through the Reddit [thread][] for more info or check out the [source][] and
 [Reddit]: http://reddit.com
 [api]: https://github.com/mellort/reddit_api
 [thread]: http://www.reddit.com/r/Python/comments/k6enr/a_website_that_lets_you_browse_reddit_like_youre/
-[source]: {{links.bitbucket}}/rdoqdoq
+[source]: {{site.bitbucket}}/rdoqdoq
 
 Screenshots
 -----
 
-![Python]({{site.url}}/media/images/projects/{{page.page_name}}/rdoqdoq-python.png)
+![Python]({{site.repo}}images{{page.url}}/rdoqdoq-python.png)
 
-![Java]({{site.url}}/media/images/projects/{{page.page_name}}/rdoqdoq-java.png)
+![Java]({{site.repo}}images{{page.url}}/rdoqdoq-java.png)
 
-![Comments]({{site.url}}/media/images/projects/{{page.page_name}}/rdoqdoq-comments.png)
+![Comments]({{site.repo}}images{{page.url}}/rdoqdoq-comments.png)
 
