@@ -41,7 +41,7 @@ Read the [blog post][blogpost] for a more detailed writeup.
 
 ![Sample page]({{site.repo}}images{{page.url}}/page.png)
 
-[blogpost]: {{site.url}}/blog/2011/sunrise-a-wordpress-theme
+[blogpost]: {{site.url}}/blog/sunrise-a-wordpress-theme
 [Bitbucket]: {{site.bitbucket}}/sunrise
 [Github]: {{site.github}}/sunrise
 [Download]: {{site.bitbucket}}/sunrise/get/v1.1.0.zip
