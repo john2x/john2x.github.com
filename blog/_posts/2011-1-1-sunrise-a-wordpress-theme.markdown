@@ -33,13 +33,13 @@ And Internet Explrorer fallbacks to a non-transparent text background.
 I've decided to not include comments and commenting in the theme. I couldn't find a space to place them and I think pictures don't need much discussion anyway. 
 
 <h2 id="screenshots">Screenshots</h2>
-![Homepage]({{site.url}}/media/images/projects/sunrise/index.png)
+![Homepage]({{site.github}}images{{page.url}}/index.png)
 
-![Post with info]({{site.url}}/media/images/projects/sunrise/single-with-info.png)
+![Post with info]({{site.github}}images{{page.url}}/single-with-info.png)
 
-![Post with info hidden]({{site.url}}/media/images/projects/sunrise/single-no-info.png)
+![Post with info hidden]({{site.github}}images{{page.url}}/single-no-info.png)
 
-![Sample page]({{site.url}}/media/images/projects/sunrise/page.png)
+![Sample page]({{site.github}}images{{page.url}}/page.png)
 
 <h2 id="links">Links</h2>
 [Project page][project].
