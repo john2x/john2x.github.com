@@ -33,7 +33,7 @@ Read the [blog post][blogpost] for a more detailed writeup.
 
 
 <h2 id="screenshots">Screenshots</h2>
-![Homepage]({{site.url}}/media/images/projects/{{page.page_name}}/index.png)
+![Homepage]({{site.repo}}images{{page.url}}/index.png)
 
 ![Post with info]({{site.repo}}images{{page.url}}/single-with-info.png)
 
