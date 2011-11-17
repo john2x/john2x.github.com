@@ -226,7 +226,7 @@ a:hover {
 	color: gray;
 }
 
-header {
+header, #home {
 	text-align: center;
 }
 
@@ -283,13 +283,13 @@ header h1.title {
 	font-size: 36px;
 }
 
-header p, .desc {
+#home p, .desc {
 	font-style: italic;
 	font-family: 'Lobster Two', Georgia, Times, serif;
 	font-size: 18px;
 }
 
-header p a {
+#home p a {
 	text-decoration: none;
 }
 
@@ -327,6 +327,7 @@ footer {
 	box-shadow: 0px 0px 16px 1px #555;
 	-moz-box-shadow: 0px 0px 16px 1px #555;
 	-webkit-box-shadow: 0px 0px 16px 1px #555;
+	max-width: 620px;
 }
 
 code, pre {
@@ -378,9 +379,23 @@ pre {
    Modify as content requires.
    ========================================================================== */
 
-@media only screen and (min-width: 480px) {
+@media only screen and (max-width: 480px) {
   /* Style adjustments for viewports 480px and over go here */
-
+	body {
+		width: auto;
+	}
+	.container_12 {
+		width: 480px;
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+	.container_12 .grid_2,
+	.container_12 .grid_12 {
+		width: 420px;
+	}
+	#post-content img {
+		max-width: 420px;
+	}
 }
 
 @media only screen and (min-width: 768px) {
