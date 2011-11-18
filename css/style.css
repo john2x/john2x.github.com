@@ -334,7 +334,7 @@ footer {
 
 code, pre {
 	font-size: 12px;
-	background-color: #F2E4DC;
+	background-color: #eee8d5;
 	border-radius: 4px;
 	-moz-border-radius: 4px;
 }
@@ -345,6 +345,10 @@ code {
 
 pre {
 	padding: 8px;
+}
+
+pre code {
+	padding: 0;
 }
 
 
