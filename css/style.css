@@ -211,6 +211,8 @@ td { vertical-align: top; }
    Author: John Louis Del Rosario
    ========================================================================== */
 
+@import url(mobile.css);
+
 body {
 	font-size: 16px;
 	margin-top: 20px;
@@ -327,7 +329,7 @@ footer {
 	box-shadow: 0px 0px 16px 1px #555;
 	-moz-box-shadow: 0px 0px 16px 1px #555;
 	-webkit-box-shadow: 0px 0px 16px 1px #555;
-	max-width: 620px;
+	max-width: 460px;
 }
 
 code, pre {
@@ -379,30 +381,16 @@ pre {
    Modify as content requires.
    ========================================================================== */
 
-@media only screen and (max-width: 480px) {
-  /* Style adjustments for viewports 480px and over go here */
-	body {
-		width: auto;
-	}
-	.container_12 {
-		width: 480px;
-		margin-left: 10px;
-		margin-right: 10px;
-	}
-	.container_12 .grid_2,
-	.container_12 .grid_12 {
-		width: 420px;
-	}
-	#post-content img {
-		max-width: 420px;
-	}
-}
-
 @media only screen and (min-width: 768px) {
   /* Style adjustments for viewports 768px and over go here */
-
+	#post-content img {
+		max-width: 620px;
+	}
 }
 
+@media only screen and (min-width: 980px) {
+  /* Style adjustments for viewports 980px and over go here */
+}
 
 
 /* ==|== print styles =======================================================
