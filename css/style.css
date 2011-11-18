@@ -381,7 +381,7 @@ pre {
    Modify as content requires.
    ========================================================================== */
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 620px) {
   /* Style adjustments for viewports 768px and over go here */
 	#post-content img {
 		max-width: 620px;
