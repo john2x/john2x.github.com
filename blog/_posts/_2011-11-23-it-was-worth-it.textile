@@ -1,0 +1,17 @@
+---
+title: The Right Tool
+layout: post
+category: blog
+---
+
+I was playing around with Arch Linux the other day and one of the steps of its install process was to choose a text editor. The choices where Nano and Vi, with Vi labelled as "Advanced". I instinctively chose Vi, since I already use Vim everyday. 
+
+I didn't give it much thought at the time, but when I fired up Vim at work today, I realized I've been using the same tool to write code at work on a Windows machine, at home on a Mac, Windows and soon-to-be Arch Linux combo, and maybe, someday, on my own VPS via SSH[1]. 
+
+It gave me a great sense of satisfaction knowing that the tool I use everyday is (potentially) available _anywhere_. I never have to worry about what text editor to use anymore, except if the platform I'm developing on requires I use its own IDE (e.g. .Net, iOS). 
+
+h2. Not just for editors
+
+I don't want to make this into yet another "OMG Vim is the best, ever" post, 
+
+fn1. I'd really like to try developing on an iPad. 
