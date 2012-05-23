@@ -236,12 +236,11 @@ for other buttons, refer to PayPal's [docs on IPN variables][].
 ### Using the Sandbox Tool
 
 PayPal provides a Sandbox tool which simulates sending IPN messages to your
-IPN handler. Visit [http://sandbox.paypal.com][https://www.sandbox.paypal.com/]
+IPN handler. Visit [http://sandbox.paypal.com](https://www.sandbox.paypal.com/)
 to get started. You'll need to sign up for a separate Sandbox account, then go
 to "Test Tools" > "Instant Payment Notification (IPN) simulator". Fill in the
-URL (use `/ipn/sandbox` since the Sandbox uses a different URL) 
-to your IPN handler, select the transaction type you want, then click 
-submit. 
+URL to your IPN handler(use `/ipn/sandbox` since the Sandbox uses a different
+URL), select the transaction type you want, then click submit. 
 
 Unfortunately, the IPN simulator doesn't have the option to send subscription
 IPNs. I resorted to testing it "live", by actually clicking on the subscribe
@@ -261,7 +260,9 @@ other types soon (it's open source, so anyone can add :P).
 
 It's the reason why the code above has
 
-    if not self.request.headers['User-Agent'] == 'python-requests/0.11.2'
+{% highlight python %}
+if not self.request.headers['User-Agent'] == 'python-requests/0.11.2'
+{% endhighlight %}
 
 since the script uses the [Requests][] library. So if the request came from
 Requests, we skip calling `verify_ipn()`.
