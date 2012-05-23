@@ -11,7 +11,7 @@ notification when a transaction is affected.
 
 Basically, once a PayPal transaction happens, it sends a notification to a
 handler you specify, with all the information and variables you need to handle
-that that event in your application.
+that event in your application.
 
 Check out PayPal's official [docs on IPN][] for more information. 
 
@@ -49,6 +49,11 @@ Don't forget to update the HTML in your app's subscribe page as well.
 
 Once that's set up, we can begin writing the code for our IPN handler. I'll
 just show the entire handler below and explain the parts.
+
+The code below is basically the code in [this blog post][], rewritten to
+work with Tornado.
+
+[this blog post]: http://kbeezie.com/view/paypal-ipn-python/
 
 {% highlight python %}
 import logging
