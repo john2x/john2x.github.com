@@ -6,6 +6,8 @@ category: projects
 description: Vim marks for pirates. Arr!
 ---
 
+[Github page](https://github.com/john2x/x-marks-the-spot.vim).
+
 Basic usage
 -----------
 Default mappings:
