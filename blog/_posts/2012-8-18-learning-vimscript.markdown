@@ -30,7 +30,7 @@ e.g.:
 
 Note that it works for the other comparison operators too, like `<#`, `>?`, `!=#`, `!=?`, etc. 
 
-<h2 id="dynamic-type-casting">Dynamic type casting &emdash; Not!</h2>
+<h2 id="dynamic-type-casting">Dynamic type casting &mdash; Not!</h2>
 
 This one was more of a hair-puller than a head-scratcher when I encountered it. 
 
