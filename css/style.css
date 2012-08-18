@@ -216,7 +216,8 @@ td { vertical-align: top; }
 body {
 	font-size: 16px;
 	margin-top: 20px;
-	background: url("../images/ricepaper2.png") repeat;
+	/*background: url("../images/ricepaper2.png") repeat;*/
+    background: #F1EEED;
 	font-family: Georgia, Times, serif;
 }
 
