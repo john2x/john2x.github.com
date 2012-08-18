@@ -24,11 +24,9 @@ Fortunately there are ways to force case-sensitive/insensitive comparisons. Just
 
 e.g.: 
 
-{% highlight vimscript %}
-"foo" ==# "foo" " true
-"foo" ==# "FOO" " false
-"foo" ==? "FOO" " true
-{% endhighlight %}
+	"foo" ==# "foo" " true
+	"foo" ==# "FOO" " false
+	"foo" ==? "FOO" " true
 
 Note that it works for the other comparison operators too, like `<#`, `>?`, `!=#`, `!=?`, etc. 
 
@@ -38,24 +36,20 @@ This one was more of a hair-puller than a head-scratcher when I encountered it.
 
 Dynamic type casting is mentioned (but not yet revisited) in [Chapter 19][lvsthw-19] of LVSTHW, demonstrating that the following is legal:
  
-{% highlight vimscript %}
-let foo = "bar"
-echo foo
-let foo = 5
-echo foo
-{% endhighlight %}
+	let foo = "bar"
+	echo foo
+	let foo = 5
+	echo foo
 
 From this you would probably assume that Vimscript has no problem casting any type to another (I definitely did, missing the brief statement about it from Chapter 19), but apparently it only works with strings to numbers and vice-versa. 
 
 The following is not legal, for example:
 
-{% highlight vimscript %}
-let list = [1, 2, 3]
-let list = "foo"
+	let list = [1, 2, 3]
+	let list = "foo"
 
-let dict = {"a": 1, "b": 2, "c": 3}
-let dict = [3, 2, 1]
-{% endhighlight %}
+	let dict = {"a": 1, "b": 2, "c": 3}
+	let dict = [3, 2, 1]
 
 If you want to reuse a variable as another type, you can `unlet` the variable and declare it again. 
 
