@@ -1,4 +1,3 @@
-
 ---
 title: X Marks the Spot
 layout: post
