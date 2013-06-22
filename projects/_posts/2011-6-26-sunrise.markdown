@@ -23,8 +23,6 @@ Sunrise is a free WordPress photo blogging theme. It is inspired by magazine fol
 - Comments are disabled (no plans on adding them yet)
 
 
-View the [demo][] to see how it looks.
-
 [Download][] and start using it on your photo blog.
 
 The source is on [Bitbucket][] and [Github][]. Feel free to modify it. Some attribution would be nice though. 
