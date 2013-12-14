@@ -290,13 +290,13 @@ header h1.title {
 	font-size: 36px;
 }
 
-#home p, .desc {
+#home p, .desc, #home a.twitter-timeline {
 	font-style: italic;
 	font-family: 'Lobster Two', Georgia, Times, serif;
 	font-size: 18px;
 }
 
-#home p a {
+#home p a, #home a.twitter-timeline {
 	text-decoration: none;
 }
 
