@@ -8,7 +8,7 @@ When I try to write or read some Clojure code, every now and then I get stuck on
 
 So I decided I'd write a little tutorial/cheatsheet for Clojure destructuring, both as an attempt to really grok it (I absorb stuff more quickly if I write it down), and as future reference for myself and others.
 
-Below is the whole thing, copied from the original [gist][gist]. I'm planning on adding more (elaborate) examples and a section for [compojure's own destructuring forms][compojure].
+Below is the whole thing, copied from the original [gist][gist]. I'm planning on adding more (elaborate) examples and a section for [compojure's own destructuring forms][compojure]. If you want to bookmark the cheat sheet, I recommend the [gist][gist] since it has proper syntax highlighting and will be updated first.
 
 [gist]: https://gist.github.com/john2x/e1dca953548bfdfb9844
 [compojure]: https://github.com/weavejester/compojure/wiki/Destructuring-Syntax
