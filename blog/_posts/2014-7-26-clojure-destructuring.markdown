@@ -15,9 +15,6 @@ Below is the whole thing, copied from the original [gist][gist]. I'm planning on
 
 * * *
 
-Clojure Destructuring Tutorial and Cheat Sheet
-==============================================
-
 Simply put, destructuring in Clojure is a way extract values from a datastructure and bind them to symbols, without having to explicitly traverse the datstructure. It allows for elegant and concise Clojure code.
 
 Vectors
