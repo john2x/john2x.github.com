@@ -1,6 +1,8 @@
 ---
 title: "Sunrise: A WordPress Theme"
+date: 2011-6-26
 layout: post
+permalink: /blog/sunrise-a-wordpress-theme
 category: blog
 ---
 
@@ -33,13 +35,15 @@ And Internet Explrorer fallbacks to a non-transparent text background.
 I've decided to not include comments and commenting in the theme. I couldn't find a space to place them and I think pictures don't need much discussion anyway. 
 
 <h2 id="screenshots">Screenshots</h2>
-![Homepage]({{site.repo}}images{{page.url}}/index.png)
 
-![Post with info]({{site.repo}}images{{page.url}}/single-with-info.png)
 
-![Post with info hidden]({{site.repo}}images{{page.url}}/single-no-info.png)
+![Homepage]({{site.data.global.static.images}}{{page.url}}/index.png)
 
-![Sample page]({{site.repo}}images{{page.url}}/page.png)
+![Post with info]({{site.data.global.static.images}}{{page.url}}/single-with-info.png)
+
+![Post with info hidden]({{site.data.global.static.images}}{{page.url}}/single-no-info.png)
+
+![Sample page]({{site.data.global.static.images}}{{page.url}}/page.png)
 
 <h2 id="links">Links</h2>
 [Project page][project].
@@ -57,10 +61,10 @@ I've decided to not include comments and commenting in the theme. I couldn't fin
 [forrst]: http://forrst.com/posts/Untitled-Ej
 [Opera]: http://opera.com
 [Tweet me]: http://twitter.com/john2x
-[Bitbucket]: {{links.bitbucket}}/sunrise
-[Github]: {{links.github}}/sunrise
-[Download]: {{links.bitbucket}}/sunrise/get/v1.1.0.zip
+[Bitbucket]: {{site.data.global.links.bitbucket}}/sunrise
+[Github]: {{site.github.owner_url}}/sunrise
+[Download]: {{site.data.global.links.bitbucket}}/sunrise/get/v1.1.0.zip
 [project]: {{site.url}}/projects/sunrise
-[Source]: {{links.bitbucket}}/sunrise
+[Source]: {{site.data.global.links.bitbucket}}/sunrise
 [Demo]: {{site.url}}/wordpress
 

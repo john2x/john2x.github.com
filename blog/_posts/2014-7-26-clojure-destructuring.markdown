@@ -1,5 +1,7 @@
 ---
 title: Clojure Destructuring Tutorial and Cheat Sheet
+date: 2014-7-26
+permalink: /blog/clojure-destructuring
 layout: post
 category: blog
 ---

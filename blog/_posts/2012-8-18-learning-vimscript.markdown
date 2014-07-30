@@ -1,6 +1,8 @@
 ---
 title: Learning Vimscript
+date: 2012-8-18
 layout: post
+permalink: /blog/learning-vimscript
 category: blog
 ---
 

@@ -296,6 +296,11 @@ header h1.title {
 	font-size: 18px;
 }
 
+.desc.post-date {
+  display: block;
+  text-align: center;
+}
+
 #home p a, #home a.twitter-timeline {
 	text-decoration: none;
 }
