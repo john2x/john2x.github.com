@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+  xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>john2x.com</title>
+    <link>http://john2x.com</link>
+    <description>RSS feed for john2x.com</description>
+    <copyright>John Louis Del Rosario</copyright>
+    <pubDate>Sat, 26 Jul 2014 00:00:00 +0800</pubDate>
+    <item>
+      <title>Clojure Destructuring Tutorial and Cheat Sheet</title>
+      <link>http://john2x.com/blog/clojure-destructuring</link>
+      <description>&lt;p&gt;When I try to write or read some Clojure code, every now and then I get stuck on some destructuring forms. It’s like a broken record. One moment I’m in the zone, then this thing hits me and I have to stop what I’m doing to try and grok what I’m looking at.&lt;/p&gt;</description>
+      <pubDate>Sat, 26 Jul 2014 00:00:00 +0800</pubDate>
+      <guid>http://john2x.com/blog/clojure-destructuring</guid>
+      <dc:date>2014-07-26T00:00:00+08:00</dc:date>
+    </item>
+    <item>
+      <title>X Marks the Spot</title>
+      <link>http://john2x.com/projects/2012/08/18/x-marks-the-spot.html</link>
+      <description>&lt;p&gt;&lt;a href=&quot;https://github.com/john2x/x-marks-the-spot.vim&quot;&gt;Github page&lt;/a&gt;.&lt;/p&gt;</description>
+      <pubDate>Sat, 18 Aug 2012 00:00:00 +0800</pubDate>
+      <guid>http://john2x.com/projects/2012/08/18/x-marks-the-spot.html</guid>
+      <dc:date>2012-08-18T00:00:00+08:00</dc:date>
+    </item>
+    <item>
+      <title>Learning Vimscript</title>
+      <link>http://john2x.com/blog/learning-vimscript</link>
+      <description>&lt;p&gt;I wrote my first &lt;a href=&quot;https://github.com/john2x/x-marks-the-spot.vim&quot;&gt;Vim plugin&lt;/a&gt; a few days ago. Although the usefulness of said plugin is up for debate, I’m pretty glad I made it.&lt;/p&gt;</description>
+      <pubDate>Sat, 18 Aug 2012 00:00:00 +0800</pubDate>
+      <guid>http://john2x.com/blog/learning-vimscript</guid>
+      <dc:date>2012-08-18T00:00:00+08:00</dc:date>
+    </item>
+    <item>
+      <title>Sunrise: A WordPress Theme</title>
+      <link>http://john2x.com/blog/sunrise-a-wordpress-theme</link>
+      <description>&lt;h2 id='about-sunrise'&gt;About Sunrise&lt;/h2&gt;</description>
+      <pubDate>Sun, 26 Jun 2011 00:00:00 +0800</pubDate>
+      <guid>http://john2x.com/blog/sunrise-a-wordpress-theme</guid>
+      <dc:date>2011-06-26T00:00:00+08:00</dc:date>
+    </item>
+    <item>
+      <title>Sunrise</title>
+      <link>http://john2x.com/projects/2011/06/26/sunrise.html</link>
+      <description>&lt;h2 id='what-is-sunrise'&gt;What is Sunrise?&lt;/h2&gt;
+&lt;p&gt;Sunrise is a free WordPress photo blogging theme. It is inspired by magazine foldouts and poster design.&lt;/p&gt;</description>
+      <pubDate>Sun, 26 Jun 2011 00:00:00 +0800</pubDate>
+      <guid>http://john2x.com/projects/2011/06/26/sunrise.html</guid>
+      <dc:date>2011-06-26T00:00:00+08:00</dc:date>
+    </item>
+    <item>
+      <title>My Vim Setup</title>
+      <link>http://john2x.com/blog/my-vim-setup</link>
+      <description>&lt;p&gt;&lt;a href=&quot;http://www.vim.org&quot;&gt;Vim&lt;/a&gt; is my preferred editor to write in, code or otherwise. Whenever I am forced to use another program to write, I feel uncomfortable and sometimes accidentally type in stuff like “dw” or “:w” and I find myself pressing &lt;code&gt;&amp;lt;Esc&amp;gt;&lt;/code&gt; all the time.&lt;/p&gt;</description>
+      <pubDate>Thu, 31 Mar 2011 00:00:00 +0800</pubDate>
+      <guid>http://john2x.com/blog/my-vim-setup</guid>
+      <dc:date>2011-03-31T00:00:00+08:00</dc:date>
+    </item>
+    <item>
+      <title>Tetrys</title>
+      <link>http://john2x.com/projects/2011/01/02/tetrys.html</link>
+      <description>&lt;h2 id=&quot;my_humble_foray_into_game_development&quot;&gt;My Humble Foray into Game Development&lt;/h2&gt;
+
+&lt;p&gt;Cloning Tetris is considered by many to be the &lt;a href=&quot;http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=206331&quot;&gt;Ornithopter&lt;/a&gt; for budding game developers. The game is simple enough for beginners to replicate, but it has all the basic components of a good game. Graphics, sound, user input and controls, scoring, win and lose conditions and basic collision detection. There is no AI involved, which is quite intimidating even to someone much more experienced.&lt;/p&gt;</description>
+      <pubDate>Sun, 02 Jan 2011 00:00:00 +0800</pubDate>
+      <guid>http://john2x.com/projects/2011/01/02/tetrys.html</guid>
+      <dc:date>2011-01-02T00:00:00+08:00</dc:date>
+    </item>
+    <item>
+      <title>T-Shirt Designs</title>
+      <link>http://john2x.com/doodles/2011/01/01/tshirt-designs.html</link>
+      <description>&lt;h2 id='i-heart-you'&gt;I Heart You&lt;/h2&gt;</description>
+      <pubDate>Sat, 01 Jan 2011 00:00:00 +0800</pubDate>
+      <guid>http://john2x.com/doodles/2011/01/01/tshirt-designs.html</guid>
+      <dc:date>2011-01-01T00:00:00+08:00</dc:date>
+    </item>
+    <item>
+      <title>Roguelike Prototype</title>
+      <link>http://john2x.com/projects/2010/12/11/roguelike-prototype.html</link>
+      <description>&lt;h2 id=&quot;biting_off_more_than_i_can_chew&quot;&gt;Biting Off More Than I Can Chew&lt;/h2&gt;
+
+&lt;p&gt;I first heard about &lt;a href=&quot;http://en.wikipedia.org/wiki/Roguelike&quot;&gt;roguelikes&lt;/a&gt; on &lt;a href=&quot;http://reddit.com/r/roguelikes&quot;&gt;reddit&lt;/a&gt; and I immediately had an idea for one (it involved zombies). I thought it wouldn’t be too hard, but I overestimated my abilities.&lt;/p&gt;</description>
+      <pubDate>Sat, 11 Dec 2010 00:00:00 +0800</pubDate>
+      <guid>http://john2x.com/projects/2010/12/11/roguelike-prototype.html</guid>
+      <dc:date>2010-12-11T00:00:00+08:00</dc:date>
+    </item>
+    <item>
+      <title>Calendar</title>
+      <link>http://john2x.com/doodles/2010/12/03/calendar.html</link>
+      <description>&lt;p&gt;&lt;img src=&quot;images/doodles/2010/12/03/calendar.html/full.jpg&quot; alt=&quot;full&quot; title=&quot;Calendar&quot; /&gt;&lt;/p&gt;</description>
+      <pubDate>Fri, 03 Dec 2010 00:00:00 +0800</pubDate>
+      <guid>http://john2x.com/doodles/2010/12/03/calendar.html</guid>
+      <dc:date>2010-12-03T00:00:00+08:00</dc:date>
+    </item>
+    <dc:date>2014-07-26T00:00:00+08:00</dc:date>
+  </channel>
+</rss>
