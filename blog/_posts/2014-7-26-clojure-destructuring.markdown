@@ -4,6 +4,7 @@ date: 2014-7-26
 permalink: /blog/clojure-destructuring
 layout: post
 category: blog
+tags: clojure
 ---
 
 When I try to write or read some Clojure code, every now and then I get stuck on some destructuring forms. It's like a broken record. One moment I'm in the zone, then this thing hits me and I have to stop what I'm doing to try and grok what I'm looking at.

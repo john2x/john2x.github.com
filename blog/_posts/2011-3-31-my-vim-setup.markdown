@@ -4,6 +4,7 @@ date: 2011-3-31
 layout: post
 permalink: /blog/my-vim-setup
 category: blog
+tags: vim
 ---
 
 [Vim][] is my preferred editor to write in, code or otherwise. Whenever I am forced to use another program to write, I feel uncomfortable and sometimes accidentally type in stuff like "dw" or ":w" and I find myself pressing `<Esc>` all the time. 

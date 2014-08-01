@@ -1,6 +1,6 @@
 pygments: true
 exclude: ["vendor"]
-google_analytics_id: UA-50755011-1
+google_analytics_id: UA-24180295-1
 github: {
   "hostname": "github.com",
   "pages_hostname": "github.io",
@@ -11,3 +11,11 @@ github: {
   "repository_url": "https://github.com/john2x/john2x.github.com",
   "url": "http://john2x.com"
 }
+
+# plugins
+# rss
+name: john2x.com
+url: http://john2x.com
+author: "John Louis Del Rosario"
+copyright: "John Louis Del Rosario"
+rss_post_limit: 10

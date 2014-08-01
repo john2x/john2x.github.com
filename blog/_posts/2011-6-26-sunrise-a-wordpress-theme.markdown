@@ -4,6 +4,7 @@ date: 2011-6-26
 layout: post
 permalink: /blog/sunrise-a-wordpress-theme
 category: blog
+tags: wordpress
 ---
 
 <h2 id="about-sunrise">About Sunrise</h2>

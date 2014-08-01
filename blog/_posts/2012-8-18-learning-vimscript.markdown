@@ -4,6 +4,7 @@ date: 2012-8-18
 layout: post
 permalink: /blog/learning-vimscript
 category: blog
+tags: vim
 ---
 
 I wrote my first [Vim plugin][x-marks-the-spot] a few days ago. Although the usefulness of said plugin is up for debate, I'm pretty glad I made it. 
