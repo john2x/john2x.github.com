@@ -1,0 +1,1531 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>John's Emacs Config</title>
+<!-- 2015-06-30 Tue 13:17 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="John Del Rosario" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="css/worg.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">John's Emacs Config</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">init.org</a>
+<ul>
+<li><a href="#sec-1-1">System paths and files</a></li>
+<li><a href="#sec-1-2">Constants</a></li>
+<li><a href="#sec-1-3">Package Archives and Management</a>
+<ul>
+<li><a href="#sec-1-3-1">MELPA</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-4">Utility Functions and Macros</a>
+<ul>
+<li><a href="#sec-1-4-1"><code>install-package</code></a></li>
+<li><a href="#sec-1-4-2"><code>after-load</code></a></li>
+<li><a href="#sec-1-4-3"><code>add-auto-mode</code></a></li>
+</ul>
+</li>
+<li><a href="#sec-1-5">OS Specific</a>
+<ul>
+<li><a href="#sec-1-5-1">OS X</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-6">Install Packages</a></li>
+<li><a href="#sec-1-7">Configure</a>
+<ul>
+<li><a href="#sec-1-7-1">Misc</a></li>
+<li><a href="#sec-1-7-2">Shell</a></li>
+<li><a href="#sec-1-7-3">UI</a>
+<ul>
+<li><a href="#sec-1-7-3-1">Font</a></li>
+<li><a href="#sec-1-7-3-2">Theme</a></li>
+<li><a href="#sec-1-7-3-3">Mode line</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-7-4">ido, <code>M-x</code></a></li>
+<li><a href="#sec-1-7-5">Window and frame management</a></li>
+<li><a href="#sec-1-7-6">Interactive searching</a></li>
+<li><a href="#sec-1-7-7">Completion</a>
+<ul>
+<li><a href="#sec-1-7-7-1">company</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-7-8">Language Specific</a>
+<ul>
+<li><a href="#sec-1-7-8-1">Python</a></li>
+<li><a href="#sec-1-7-8-2">YAML</a></li>
+<li><a href="#sec-1-7-8-3">HTML/CSS (<code>web-mode</code>)</a></li>
+<li><a href="#sec-1-7-8-4">Markdown</a></li>
+<li><a href="#sec-1-7-8-5">Javascript</a></li>
+<li><a href="#sec-1-7-8-6">Lisp</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-7-9">Dired</a></li>
+<li><a href="#sec-1-7-10">Org</a></li>
+<li><a href="#sec-1-7-11">Git</a>
+<ul>
+<li><a href="#sec-1-7-11-1">Magit</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-7-12">Flycheck</a></li>
+<li><a href="#sec-1-7-13">Projectile</a></li>
+<li><a href="#sec-1-7-14">Evil</a></li>
+<li><a href="#sec-1-7-15">Perspective</a></li>
+<li><a href="#sec-1-7-16">Ledger</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">init.org</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+See <code>init.el</code> on how Org loads and interprets this file for initializing Emacs.
+</p>
+
+<p>
+The latest raw version of this file can be found at <a href="https://github.com/john2x/emacs.d">https://github.com/john2x/emacs.d</a>.
+</p>
+
+<p>
+This file was last exported: 2015-06-30 13:17
+</p>
+</div>
+
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">System paths and files</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Tell Emacs where to put packages installed from Melpa, where custom themes
+can be loaded and where customizations done with <code>customize</code> should be stored.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-to-list 'load-path (expand-file-name "lib" "~/.emacs.d/"))
+(add-to-list 'custom-theme-load-path (expand-file-name "themes" "~/.emacs.d/"))
+
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+  (when (file-exists-p custom-file)
+  (load custom-file))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2">Constants</h3>
+<div class="outline-text-3" id="text-1-2">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(defconst *is-a-mac* (eq system-type 'darwin))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3">Package Archives and Management</h3>
+<div class="outline-text-3" id="text-1-3">
+</div><div id="outline-container-sec-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1">MELPA</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<p>
+Add MELPA package archive
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(require 'package)
+(add-to-list 'package-archives
+  '("melpa" . "http://melpa.org/packages/") t)
+(package-initialize)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4">Utility Functions and Macros</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+Define utility functions and macros used throughout this config file.
+</p>
+</div>
+
+<div id="outline-container-sec-1-4-1" class="outline-4">
+<h4 id="sec-1-4-1"><code>install-package</code></h4>
+<div class="outline-text-4" id="text-1-4-1">
+<p>
+Define <code>install-package</code> for easier installing of
+packages.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">;; copied from github.com/purcell/emacs.d
+(defun install-package (package &amp;optional min-version no-refresh)
+  "Install given PACKAGE, optionally requiring MIN-VERSION.
+If NO-REFRESH is non-nil, the available package lists will not be
+re-downloaded in order to locate PACKAGE."
+  (message "%s" package)
+  (if (package-installed-p package min-version)
+      t
+    (if (or (assoc package package-archive-contents) no-refresh)
+        (package-install package)
+      (progn
+        (package-refresh-contents)
+        (install-package package min-version t)))))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4-2" class="outline-4">
+<h4 id="sec-1-4-2"><code>after-load</code></h4>
+<div class="outline-text-4" id="text-1-4-2">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(defmacro after-load (feature &amp;rest body)
+  "After FEATURE is loaded, evaluate BODY."
+  (declare (indent defun))
+  `(eval-after-load ,feature
+     '(progn ,@body)))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4-3" class="outline-4">
+<h4 id="sec-1-4-3"><code>add-auto-mode</code></h4>
+<div class="outline-text-4" id="text-1-4-3">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(defun add-auto-mode (mode &amp;rest patterns)
+  "Add entries to `auto-mode-alist' to use `MODE' for all given file `PATTERNS'."
+  (dolist (pattern patterns)
+    (add-to-list 'auto-mode-alist (cons pattern mode))))
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5" class="outline-3">
+<h3 id="sec-1-5">OS Specific</h3>
+<div class="outline-text-3" id="text-1-5">
+</div><div id="outline-container-sec-1-5-1" class="outline-4">
+<h4 id="sec-1-5-1">OS X</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<p>
+Conditionally set the following when on OS X (see <b>Constants</b>):
+</p>
+<ol class="org-ol">
+<li>Reveal file in current buffer in Finder.
+</li>
+<li>Use Command ⌘ for Meta and don't use Option ⌥.
+</li>
+<li>Fix mouse wheel/trackpad scrolling to be less "jerky".
+</li>
+</ol>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(when *is-a-mac*
+  ;; 1.
+  (install-package 'reveal-in-finder)
+  (require 'reveal-in-finder)
+  ;; 2.
+  (setq mac-command-modifier 'meta)
+  (setq mac-option-modifier 'none)
+  ;; 3.
+  (setq mouse-wheel-scroll-amount '(1
+                                    ((shift) . 5)
+                                    ((control)))))
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-6" class="outline-3">
+<h3 id="sec-1-6">Install Packages</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+Install all packages here using <code>install-package</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(defvar my-packages
+  '(;;;; Misc
+    exec-path-from-shell
+    undo-tree
+    bind-key
+
+    ;;;; Mode-line
+    diminish
+    smart-mode-line
+
+    ;;;; UI
+    indent-guide
+    yascroll
+    highlight-symbol
+    smooth-scrolling
+
+    ;;;; ido, ~M-x~
+    flx-ido
+    ido-ubiquitous
+    smex
+    idomenu
+
+    ;;;; Window and frame management
+    buffer-move
+    window-number
+    fullframe
+
+    ;;;; Interactive Search
+    anzu
+
+    ;;;; Completion
+    company
+
+    ;;;; Linting
+    flycheck
+
+    ;;;; Dired
+    dired+
+
+    ;;;; Ack &amp; Ag
+    ag
+
+    ;;;; Git
+    magit
+    git-blame
+    git-commit-mode
+    git-rebase-mode
+    gitignore-mode
+    gitconfig-mode
+    git-messenger
+    git-gutter
+
+    ;;;; Projectile
+    projectile
+    flx
+    project-explorer
+
+    ;;;; Perspective
+    perspective
+
+    ;;;; Evil (Vim)
+    evil
+    evil-surround
+    evil-leader
+    evil-matchit
+    evil-nerd-commenter
+    evil-search-highlight-persist
+
+    ;;;; Ledger
+    ledger-mode
+    flycheck-ledger
+
+    ;;;; Language specific
+    ;;;;;; Python
+    virtualenvwrapper
+    anaconda-mode
+    company-anaconda
+    nose
+
+    ;;;;;; YAML
+    yaml-mode
+
+    ;;;;;; HTML, CSS
+    web-mode
+
+    ;;;;;; Markdown
+    markdown-mode
+
+    ;;;;;; Javascript
+    json-mode
+    js2-mode
+
+    ;;;;;; Lisp
+    paredit
+    rainbow-delimiters
+    highlight-parentheses)
+  "My packages!")
+
+;; loop over my-packages and install them
+(defun install-my-packages ()
+  (interactive)
+  (mapc 'install-package my-packages))
+
+(install-my-packages)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7" class="outline-3">
+<h3 id="sec-1-7">Configure</h3>
+<div class="outline-text-3" id="text-1-7">
+<p>
+Now that everything is installed and ready, we can begin
+configuring packages, modes, key bindings, etc.
+</p>
+</div>
+
+<div id="outline-container-sec-1-7-1" class="outline-4">
+<h4 id="sec-1-7-1">Misc</h4>
+<div class="outline-text-4" id="text-1-7-1">
+<p>
+For a majority of programming modes, we want to indent immediately after a
+newline.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-hook 'prog-mode-hook
+          (lambda () (local-set-key (kbd "RET") 'newline-and-indent)))
+</pre>
+</div>
+
+<p>
+For a majority of programming languages, an underscore is part of a word or symbol.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(modify-syntax-entry  ?_ "w" (standard-syntax-table))
+</pre>
+</div>
+
+<p>
+Set some generic variables.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq-default
+ tab-width 4
+ make-backup-files nil
+ indent-tabs-mode nil
+ show-trailing-whitespace t
+ visible-bell nil)
+</pre>
+</div>
+
+<p>
+We don't want to have to type "yes" or "no" at prompts.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(fset 'yes-or-no-p 'y-or-n-p)
+</pre>
+</div>
+
+<p>
+Remember where we were when we last visited a file.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq-default save-place t)
+(setq save-place-file "~/.emacs.d/tmp/saved-places")
+</pre>
+</div>
+
+<p>
+Automatically creating missing parent directories when visiting a new file.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(defun my-create-non-existent-directory ()
+      (let ((parent-directory (file-name-directory buffer-file-name)))
+        (when (and (not (file-exists-p parent-directory))
+                   (y-or-n-p (format "Directory `%s' does not exist! Create it?" parent-directory)))
+          (make-directory parent-directory t))))
+(add-to-list 'find-file-not-found-functions #'my-create-non-existent-directory)
+</pre>
+</div>
+
+<p>
+Configure smooth scrolling.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq smooth-scroll-margin 5
+      scroll-conservatively 9999
+      scroll-preserve-screen-position t
+      scroll-margin 1
+      scroll-conservatively 0
+      scroll-up-aggressively 0.01
+      scroll-down-aggressively 0.01)
+</pre>
+</div>
+
+<p>
+When visiting buffers with the same name, uniqify them instead of the default of
+appending a number.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq uniquify-buffer-name-style 'forward
+      uniquify-separator " • "
+      uniquify-after-kill-buffer-p t
+  ;; don't uniquify internal buffers (those that start with '*')
+      uniquify-ignore-buffers-re "^\\*")
+</pre>
+</div>
+
+<p>
+Bind undo/redo to sane bindings.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(require 'undo-tree)
+(global-set-key (kbd "M-z") 'undo)
+(global-set-key (kbd "M-Z") 'undo-tree-redo)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7-2" class="outline-4">
+<h4 id="sec-1-7-2">Shell</h4>
+<div class="outline-text-4" id="text-1-7-2">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">;; make these environment variables available in Emacs
+(after-load 'exec-path-from-shell
+  (dolist (var '("SSH_AUTH_SOCK"
+                 "SSH_AGENT_PID"
+                 "GPG_AGENT_INFO"
+                 "LANG"
+                 "LC_CTYPE"
+                 "LEDGER_FILE"
+                 "WORKON_HOME"))
+    (add-to-list 'exec-path-from-shell-variables var)))
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7-3" class="outline-4">
+<h4 id="sec-1-7-3">UI</h4>
+<div class="outline-text-4" id="text-1-7-3">
+<p>
+Configure UI stuff like:
+</p>
+<ul class="org-ul">
+<li>hide toolbars
+</li>
+<li>hide GUI scrollbars, use in-buffer scrollbars instead with <code>yascroll</code>
+</li>
+<li>show indentation guide (useful for Python and HTML)
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(require 'yascroll)
+(require 'indent-guide)
+
+;; don't show toolbar
+(tool-bar-mode -1)
+
+;; highlight matching parentheses
+(show-paren-mode 1)
+
+;; we use yascroll for the scrollbar instead
+(scroll-bar-mode -1)
+(global-yascroll-bar-mode 1)
+(setq yascroll:delay-to-hide nil)
+
+;; show column number in mode-line
+(column-number-mode)
+
+(setq inhibit-splash-screen t)
+
+(setq-default indicate-empty-lines t)
+
+;; enable indent-guide for the following modes only
+(setq indent-guide-recursive nil)
+(add-hook 'python-mode-hook 'indent-guide-mode)
+(add-hook 'web-mode-hook 'indent-guide-mode)
+</pre>
+</div>
+
+<p>
+Enable <code>highlight-symbol</code> in select modes. Also patch how symbols are (not)
+highlighted when holding down movement keys.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(dolist (hook '(prog-mode-hook html-mode-hook))
+  (add-hook hook 'highlight-symbol-mode)
+  (add-hook hook 'highlight-symbol-nav-mode))
+
+(eval-after-load 'highlight-symbol
+  '(diminish 'highlight-symbol-mode))
+
+;; http://emacs.stackexchange.com/questions/931
+(defun highlight-symbol-mode-post-command ()
+  "After a command, change the temporary highlighting.
+Remove the temporary symbol highlighting and, unless a timeout is specified,
+create the new one."
+  (if (eq this-command 'highlight-symbol-jump)
+      (when highlight-symbol-on-navigation-p
+        (highlight-symbol-temp-highlight))
+    (highlight-symbol-update-timer highlight-symbol-idle-delay)))
+
+(defun highlight-symbol-update-timer (value)
+  (when highlight-symbol-timer
+    (cancel-timer highlight-symbol-timer))
+  (setq highlight-symbol-timer
+        (run-with-timer value nil 'highlight-symbol-temp-highlight)))
+
+(setq highlight-symbol-idle-delay .1)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7-3-1" class="outline-5">
+<h5 id="sec-1-7-3-1">Font</h5>
+<div class="outline-text-5" id="text-1-7-3-1">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(set-frame-font (font-spec
+                 :family "Ubuntu Mono"
+                 :size 14))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-7-3-2" class="outline-5">
+<h5 id="sec-1-7-3-2">Theme</h5>
+<div class="outline-text-5" id="text-1-7-3-2">
+<p>
+Theme of the month.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(load-theme 'plan9 t)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7-3-3" class="outline-5">
+<h5 id="sec-1-7-3-3">Mode line</h5>
+<div class="outline-text-5" id="text-1-7-3-3">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(which-function-mode)
+
+(sml/setup)
+
+(setq sml/name-width 20
+      sml/mode-width 10)
+
+(add-to-list 'sml/hidden-modes " GG")
+(add-to-list 'sml/hidden-modes " wg")
+(add-to-list 'sml/hidden-modes " ElDoc")
+(add-to-list 'sml/hidden-modes " AC")
+(add-to-list 'sml/hidden-modes " WSC")
+(add-to-list 'sml/hidden-modes " Outl")
+(add-to-list 'sml/hidden-modes " hs")
+(add-to-list 'sml/hidden-modes " Midje")
+(add-to-list 'sml/hidden-modes " cider")
+(add-to-list 'sml/hidden-modes " Par")
+
+(add-to-list 'sml/replacer-regexp-list '("^~/Projects/" ":PRJ:"))
+
+(add-hook 'emacs-lisp-mode-hook
+  (lambda()
+    (setq mode-name "el")))
+(add-hook 'python-mode-hook
+  (lambda()
+    (setq mode-name "py")))
+(add-hook 'clojure-mode-hook
+  (lambda()
+    (setq mode-name "clj")))
+(add-hook 'erlang-mode-hook
+  (lambda()
+    (setq mode-name "erl")))
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7-4" class="outline-4">
+<h4 id="sec-1-7-4">ido, <code>M-x</code></h4>
+<div class="outline-text-4" id="text-1-7-4">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(ido-mode t)
+(ido-everywhere t)
+(flx-ido-mode t)
+;; auto-complete using ido everywhere
+(ido-ubiquitous-mode t)
+
+;; use smex to handle M-x
+(global-set-key [remap execute-extended-command] 'smex)
+
+(setq ido-enable-flex-matching t
+      ido-use-filename-at-point nil
+      ido-auto-merge-work-directories-length 0
+      ido-use-virtual-buffers t
+;; Allow the same buffer to be open in different frames
+      ido-default-buffer-method 'selected-window)
+</pre>
+</div>
+
+<p>
+Ignore dired buffers when using <code>ido-switch-buffer</code>, as we're only interested
+in actual file buffers (and some internal buffers).
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">;; ignore dired buffers from ido-switch-buffer
+(defun ido-ignore-dired-buffers (name)
+  (if (get-buffer name)
+      (with-current-buffer name
+        (derived-mode-p 'dired-mode))))
+(add-to-list 'ido-ignore-buffers 'ido-ignore-dired-buffers)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7-5" class="outline-4">
+<h4 id="sec-1-7-5">Window and frame management</h4>
+<div class="outline-text-4" id="text-1-7-5">
+<p>
+Use <code>M-g [h|j|k|l]</code> to swap buffers between windows.
+Also allow using numbers to switch window focus.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(require 'buffer-move)
+(require 'window-number)
+
+(dolist (fn '(buf-move-up buf-move-down buf-move-left buf-move-right))
+  (let ((file "buffer-move"))
+    (autoload fn file "Swap buffers between windows" t)))
+(global-set-key (kbd "M-g h")       'buf-move-left)
+(global-set-key (kbd "M-g l")       'buf-move-right)
+(global-set-key (kbd "M-g k")       'buf-move-up)
+(global-set-key (kbd "M-g j")       'buf-move-down)
+
+(window-number-meta-mode 1)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7-6" class="outline-4">
+<h4 id="sec-1-7-6">Interactive searching</h4>
+<div class="outline-text-4" id="text-1-7-6">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-anzu-mode t)
+
+(diminish 'anzu-mode)
+
+(global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)
+(global-set-key [remap query-replace] 'anzu-query-replace)
+
+;; Activate occur easily inside isearch
+(define-key isearch-mode-map (kbd "C-o") 'isearch-occur)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7-7" class="outline-4">
+<h4 id="sec-1-7-7">Completion</h4>
+<div class="outline-text-4" id="text-1-7-7">
+</div><div id="outline-container-sec-1-7-7-1" class="outline-5">
+<h5 id="sec-1-7-7-1">company</h5>
+<div class="outline-text-5" id="text-1-7-7-1">
+<p>
+Enable <code>company-mode</code> globally.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-hook 'after-init-hook #'global-company-mode)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7-8" class="outline-4">
+<h4 id="sec-1-7-8">Language Specific</h4>
+<div class="outline-text-4" id="text-1-7-8">
+</div><div id="outline-container-sec-1-7-8-1" class="outline-5">
+<h5 id="sec-1-7-8-1">Python</h5>
+<div class="outline-text-5" id="text-1-7-8-1">
+<p>
+Custom outline folding.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(defun py-outline-level ()
+  (let (buffer-invisibility-spec)
+    (save-excursion
+      (skip-chars-forward "\t ")
+      (current-column))))
+
+(defun my-python-hook ()
+  ; outline uses this regexp to find headers. I match lines with no indent and indented "class"
+  ; and "def" lines.
+  (setq outline-regexp "[^ \t]\\|[ \t]*\\(def\\|class\\) ")
+  ; enable our level computation
+  (setq outline-level 'py-outline-level)
+  (outline-minor-mode t))
+
+(add-hook 'python-mode-hook 'my-python-hook)
+</pre>
+</div>
+</div>
+
+<ul class="org-ul"><li><a id="sec-1-7-8-1-1" name="sec-1-7-8-1-1"></a>Anaconda<br  /><ul class="org-ul"><li><a id="sec-1-7-8-1-1-1" name="sec-1-7-8-1-1-1"></a><span class="todo TODO">TODO</span> fix <code>anaconda</code> setup<br  /><div class="outline-text-7" id="text-1-7-8-1-1-1">
+<p>
+Use Anaconda with <code>company</code> for code completion.
+(Not working at the time of writing)
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(require 'company-anaconda)
+(add-to-list 'company-backends 'company-anaconda)
+(add-hook 'python-mode-hook 'anaconda-mode)
+</pre>
+</div>
+</div>
+</li></ul>
+</li>
+
+<li><a id="sec-1-7-8-1-2" name="sec-1-7-8-1-2"></a>Virtual Environments<br  /><div class="outline-text-6" id="text-1-7-8-1-2">
+<p>
+Tell <code>virtualenvwrapper</code> where <code>$WORKON_HOME</code> is.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(venv-initialize-interactive-shells)
+(if (getenv "WORKON_HOME")
+  (setq venv-location (getenv "WORKON_HOME"))
+  (message "WORKON_HOME env variable not set."))
+</pre>
+</div>
+
+<p>
+When opening a Python file in a project with directory local variables
+set for the project's virtualenv, activate that virtualenv.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">;; e.g. in .dir-locals.el
+;; ((python-mode . ((project-venv-name . "myproject-env"))))
+
+(add-hook 'python-mode-hook (lambda ()
+                              (hack-local-variables)
+                              (when (boundp 'project-venv-name)
+                                (venv-workon project-venv-name))))
+</pre>
+</div>
+
+<p>
+Show active virtualenv in mode line.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq-default mode-line-format (cons '(:exec venv-current-name) mode-line-format))
+</pre>
+</div>
+</div>
+</li></ul>
+</div>
+
+<div id="outline-container-sec-1-7-8-2" class="outline-5">
+<h5 id="sec-1-7-8-2">YAML</h5>
+<div class="outline-text-5" id="text-1-7-8-2">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-auto-mode 'yaml-mode "\\.ya?ml\\'")
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7-8-3" class="outline-5">
+<h5 id="sec-1-7-8-3">HTML/CSS (<code>web-mode</code>)</h5>
+<div class="outline-text-5" id="text-1-7-8-3">
+<p>
+We use <code>web-mode</code> for working with templates and enable it for the following
+filetypes.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-to-list 'auto-mode-alist '("\\.jinja2?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
+
+(setq web-mode-markup-indent-offset 4
+      web-mode-css-indent-offset 4
+      web-mode-code-indent-offset 4
+      web-mode-enable-auto-quoting nil
+      web-mode-enable-block-face t
+      web-mode-enable-current-element-highlight t)
+</pre>
+</div>
+
+<p>
+Use the appropriate <code>web-mode</code> engine when visiting a particular filetype.
+At the moment we default to the <code>django</code> engine for <code>.html</code> files.
+If you are in a project that uses <code>jinja2</code> for templates, and the file extensions
+are in <code>.html</code> (a safe bet), then you'll need to define a <code>.dir-locals.el</code> file
+for that project, telling it to use the appropriate engine.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq web-mode-engines-alist
+      '(("jinja2"    . "\\.jinja2\\'")
+        ("django"    . "\\.html\\'")))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7-8-4" class="outline-5">
+<h5 id="sec-1-7-8-4">Markdown</h5>
+<div class="outline-text-5" id="text-1-7-8-4">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-to-list 'auto-mode-alist '("\\.\\(md\\|markdown\\)\\'" . markdown-mode))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7-8-5" class="outline-5">
+<h5 id="sec-1-7-8-5">Javascript</h5>
+<div class="outline-text-5" id="text-1-7-8-5">
+<p>
+We use <code>js2-mode</code> instead of the built-in <code>js-mode</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+
+(setq js2-use-font-lock-faces t
+      js2-mode-must-byte-compile nil
+      js2-basic-offset 2
+      js2-indent-on-enter-key t
+      js2-auto-indent-p t
+      js2-bounce-indent-p nil)
+
+(after-load 'js2-mode
+  (js2-imenu-extras-setup)
+  (toggle-truncate-lines))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7-8-6" class="outline-5">
+<h5 id="sec-1-7-8-6">Lisp</h5>
+<div class="outline-text-5" id="text-1-7-8-6">
+<p>
+Use <code>pp-eval-expression</code>. The same as <code>eval-expression</code>, but pretty-prints output.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd "M-:") 'pp-eval-expression)
+</pre>
+</div>
+
+<p>
+Define a list of "lispy" modes, so we can activate/deactivate stuff for all of
+them in a loop.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(require 'derived)
+
+;; elisp only
+(defconst elispy-modes
+  '(emacs-lisp-mode ielm-mode))
+;; all lisps
+(defconst lispy-modes
+  (append elispy-modes
+          '(lisp-mode inferior-lisp-mode lisp-interaction-mode
+            clojure-mode))
+  "All lispy major modes.")
+
+(defun my-lisp-setup ()
+  "Enable features useful in any Lisp mode."
+  (rainbow-delimiters-mode t)
+  ;; (hl-sexp-mode)
+  (enable-paredit-mode)
+  (turn-on-eldoc-mode)
+  (highlight-parentheses-mode))
+
+(dolist (hook (mapcar #'derived-mode-hook-name lispy-modes))
+  (add-hook hook 'my-lisp-setup))
+</pre>
+</div>
+
+<p>
+Check parentheses on save.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(defun maybe-check-parens ()
+  "Run `check-parens' if this is a lispy mode."
+  (when (memq major-mode lispy-modes)
+    (check-parens)))
+
+(add-hook 'after-save-hook 'maybe-check-parens)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7-9" class="outline-4">
+<h4 id="sec-1-7-9">Dired</h4>
+<div class="outline-text-4" id="text-1-7-9">
+<p>
+Don't hide details in dired.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq diredp-hide-details-initially-flag nil)
+</pre>
+</div>
+
+<p>
+Define some keybindings for <code>dired</code> for quick navigation.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(defun bind-dired-utils-keys ()
+  (bind-keys :map dired-mode-map
+           ("." . dired-up-directory)
+           ("M-o" . dired-subtree-insert)
+           ("M-c" . dired-subtree-remove)
+           ("M-u" . dired-subtree-up)
+           ("M-d" . dired-subtree-down)
+           ("M-p" . dired-subtree-previous-sibling)
+           ("M-n" . dired-subtree-next-sibling)
+           ("M-&gt;" . dired-subtree-end)
+           ("M-&lt;" . dired-subtree-beginning)
+           ("C-c d" . dired-filter-by-directory)
+           ("C-c f" . dired-filter-by-file)))
+</pre>
+</div>
+
+<p>
+Setup <code>dired+</code>.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(after-load 'dired
+  (require 'dired+)
+  (require 'dired-subtree)
+  (require 'dired-filter)
+  (when (fboundp 'global-dired-hide-details-mode)
+    (global-dired-hide-details-mode -1))
+  (setq dired-recursive-deletes 'top)
+  (bind-dired-utils-keys)
+  (define-key dired-mode-map [mouse-2] 'dired-find-file))
+</pre>
+</div>
+
+<p>
+Open <code>dired</code> for the current directory when pressing <code>C-x C-d</code>.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd "C-x C-d") '(lambda () (interactive) (dired ".")))
+</pre>
+</div>
+
+<p>
+Omit uninteresting files in <code>dired</code>.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-hook 'dired-mode-hook (lambda () (dired-omit-mode)))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7-10" class="outline-4">
+<h4 id="sec-1-7-10">Org</h4>
+<div class="outline-text-4" id="text-1-7-10">
+<p>
+Tell Org where our orgfiles are.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq org-directory "~/orgfiles")
+</pre>
+</div>
+
+<p>
+Set custom TODO keywords.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq org-todo-keywords
+      '((sequence "TODO" "DOING" "WAITING" "LATER" "|" "DONE" "DELEGATED")))
+</pre>
+</div>
+
+<p>
+Default notes file for <code>org-capture</code>.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq org-default-notes-file (concat org-directory "/notes.org"))
+</pre>
+</div>
+
+<p>
+Set custom <code>org-capture</code> templates.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline (concat org-directory "/todo.org") "Other")
+         "* TODO %?\n  %i\n  %a")
+        ("n" "Note" entry (file+datetree (concat org-directory "/notes.org"))
+         "* %?\nEntered on %U\n  %i\n  %a")))
+
+(global-set-key (kbd "C-c o c") 'org-capture)
+</pre>
+</div>
+
+<p>
+Add custom <code>org-agenda</code> command. We'd like to see at a glance:
+</p>
+<ul class="org-ul">
+<li>Our agenda for the week
+</li>
+<li>What we are currently working on
+</li>
+<li>List of remaining TODO items
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq org-agenda-custom-commands
+      '(("z" "Agenda and Tasks"
+         ((agenda "")
+          (todo "DOING")
+          (todo "TODO")))))
+</pre>
+</div>
+
+<p>
+Enable font-locking for org-blocks.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq org-src-fontify-natively t)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7-11" class="outline-4">
+<h4 id="sec-1-7-11">Git</h4>
+<div class="outline-text-4" id="text-1-7-11">
+<p>
+Show git status indicators in the fringe.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-git-gutter-mode 1)
+(setq git-gutter:modified-sign "* "
+      git-gutter:added-sign "+ "
+      git-gutter:deleted-sign "- "
+      git-gutter:lighter " GG")
+
+(global-set-key (kbd "M-g M-p") 'git-gutter:previous-hunk)
+(global-set-key (kbd "M-g M-n") 'git-gutter:next-hunk)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7-11-1" class="outline-5">
+<h5 id="sec-1-7-11-1">Magit</h5>
+<div class="outline-text-5" id="text-1-7-11-1">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">;; skip warning introduced by 1.4.0
+(setq magit-last-seen-setup-instructions "1.4.0")
+
+(setq-default
+ magit-save-some-buffers nil
+ magit-process-popup-time 10
+ magit-diff-refine-hunk t
+ magit-restore-window-configuration t
+ magit-completing-read-function 'magit-ido-completing-read)
+
+(global-set-key (kbd "C-c m m") 'magit-status)
+</pre>
+</div>
+
+<p>
+Make the Magit buffer take the entire frame.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(after-load 'magit
+  (fullframe magit-status magit-mode-quit-window))
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7-12" class="outline-4">
+<h4 id="sec-1-7-12">Flycheck</h4>
+<div class="outline-text-4" id="text-1-7-12">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq flycheck-check-syntax-automatically '(save idle-change mode-enabled)
+      flycheck-idle-change-delay 0.8)
+(add-hook 'after-init-hook #'global-flycheck-mode)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7-13" class="outline-4">
+<h4 id="sec-1-7-13">Projectile</h4>
+<div class="outline-text-4" id="text-1-7-13">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(projectile-global-mode)
+
+(setq projectile-switch-project-action 'projectile-dired
+      projectile-completion-system 'ido
+      projectile-enable-caching t)
+
+(global-set-key (kbd "C-x p") 'projectile-find-file)
+</pre>
+</div>
+
+<p>
+Not actually projectile, but still project management related.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd "&lt;f3&gt;") 'project-explorer-toggle)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7-14" class="outline-4">
+<h4 id="sec-1-7-14">Evil</h4>
+<div class="outline-text-4" id="text-1-7-14">
+<p>
+Bind <code>&lt;F12&gt;</code> to toggle <code>evil-local-mode</code>.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd "&lt;f12&gt;") 'evil-local-mode)
+</pre>
+</div>
+
+<p>
+Set the <code>evil-leader</code>.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(require 'evil-leader)
+(evil-leader/set-leader ",")
+(global-evil-leader-mode)
+</pre>
+</div>
+
+<p>
+Enable <code>evil-local-mode</code> for the following modes.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(defvar enable-evil-mode-hooks
+  '(clojure-mode-hook
+    python-mode-hook
+    ruby-mode-hook
+    erlang-mode-hook
+    emacs-lisp-mode-hook
+    web-mode-hook
+    css-mode-hook
+    js2-mode-hook
+    js-mode-hook
+    html-mode-hook
+    ledger-mode-hook
+    yaml-mode-hook
+    elixir-mode-hook
+    org-mode-hook
+    shell-script-mode-hook
+    markdown-mode-hook))
+(mapc (lambda (hook)
+        (add-hook hook 'evil-local-mode))
+      enable-evil-mode-hooks)
+</pre>
+</div>
+
+<p>
+Enable Evil plugins.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-evil-surround-mode 1)
+(global-evil-matchit-mode 1)
+(global-evil-search-highlight-persist t)
+(evilnc-default-hotkeys)
+</pre>
+</div>
+
+<p>
+Use <code>SPACE</code> for scrolling.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(define-key evil-normal-state-map (kbd "SPC") 'evil-scroll-down)
+(define-key evil-normal-state-map (kbd "S-SPC") 'evil-scroll-up)
+</pre>
+</div>
+
+<p>
+Bind some keys on the leader.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(evil-leader/set-key "n" 'evil-search-highlight-persist-remove-all)
+(evil-leader/set-key "w" 'evil-write)
+
+(defun my-evil-reload-buffer ()
+  (interactive)
+  (evil-edit nil t))
+(evil-leader/set-key "e" 'my-evil-reload-buffer)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7-15" class="outline-4">
+<h4 id="sec-1-7-15">Perspective</h4>
+<div class="outline-text-4" id="text-1-7-15">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(require 'persp-projectile)
+(persp-mode)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7-16" class="outline-4">
+<h4 id="sec-1-7-16">Ledger</h4>
+<div class="outline-text-4" id="text-1-7-16">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(defconst *ledger-journal-path* "~/Dropbox/ledger/john.ledger")
+
+(add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))
+
+(after-load 'flycheck
+  (require 'flycheck-ledger))
+
+(add-hook 'ledger-mode-hook 'goto-address-prog-mode)
+
+;; don't override the highlighting of each posted item
+;; in a xact if it is cleared/pending
+(setq ledger-fontify-xact-state-overrides nil)
+
+(defun ledger-open-my-journal ()
+  "Easy way to open my ledger journal"
+  (interactive)
+  (find-file *ledger-journal-path*))
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: John Del Rosario</p>
+<p class="date">Created: 2015-06-30 Tue 13:17</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
