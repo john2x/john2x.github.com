@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>John's Emacs Config</title>
-<!-- 2015-07-23 Thu 13:50 -->
+<!-- 2015-07-24 Fri 18:41 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="John Del Rosario" />
@@ -243,7 +243,7 @@ The latest raw version of this file can be found at <a href="https://github.com/
 </p>
 
 <p>
-This file was last exported: 2015-07-23 13:50
+This file was last exported: 2015-07-24 18:41
 </p>
 </div>
 </div>
@@ -463,7 +463,7 @@ Install all packages here using <code>install-package</code>.
     indent-guide
     yascroll
     highlight-symbol
-    smooth-scrolling
+    smooth-scroll
 
     <span style="color: #40883f;">;;;; </span><span style="color: #40883f;">ido, ~M-x~</span>
     flx-ido
@@ -656,13 +656,9 @@ Configure smooth scrolling.
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span>setq smooth-scroll-margin 5
-      scroll-conservatively 9999
-      scroll-preserve-screen-position t
-      scroll-margin 1
-      scroll-conservatively 0
-      scroll-up-aggressively 0.01
-      scroll-down-aggressively 0.01<span style="color: #CCCCB7;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span><span style="color: #989848;">require</span> '<span style="color: #989848; font-weight: bold;">smooth-scroll</span><span style="color: #CCCCB7;">)</span>
+<span style="color: #CCCCB7;">(</span>smooth-scroll-mode 1<span style="color: #CCCCB7;">)</span>
+<span style="color: #CCCCB7;">(</span>setq smooth-scroll/vscroll-step-size 4<span style="color: #CCCCB7;">)</span>
 </pre>
 </div>
 
@@ -1641,6 +1637,16 @@ CAP request for SASL. Until <code>erc-sasl</code> gets merged into the main ERC 
   <span style="color: #CCCCB7;">(</span>erc-update-mode-line<span style="color: #CCCCB7;">))</span>
 </pre>
 </div>
+
+<p>
+<code>.ircauthinfo</code> is where we store our NickServ passwords, so we don't have to type it in all the time
+(and it breaks <code>erc-login</code> prompt when SASL is required).
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span>add-to-list 'auth-sources <span style="color: #b85c57;">"~/.emacs.d/.ircauthinfo"</span><span style="color: #CCCCB7;">)</span>
+</pre>
+</div>
 </div>
 
 <div id="outline-container-sec-8-16-1" class="outline-4">
@@ -1837,7 +1843,7 @@ Copied from <a href="http://doc.rix.si/org/fsem.html">http://doc.rix.si/org/fsem
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: John Del Rosario</p>
-<p class="date">Created: 2015-07-23 Thu 13:50</p>
+<p class="date">Created: 2015-07-24 Fri 18:41</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
