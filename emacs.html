@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>John's Emacs Config</title>
-<!-- 2015-07-24 Fri 18:41 -->
+<!-- 2015-08-07 Fri 11:28 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="John Del Rosario" />
@@ -205,26 +205,27 @@ for the JavaScript code in this tag.
 <li><a href="#sec-8-10-7">Clojure</a></li>
 </ul>
 </li>
-<li><a href="#sec-8-11">Dired</a></li>
-<li><a href="#sec-8-12">Org</a>
+<li><a href="#sec-8-11">Code Folding (HideShow)</a></li>
+<li><a href="#sec-8-12">Dired</a></li>
+<li><a href="#sec-8-13">Org</a>
 <ul>
-<li><a href="#sec-8-12-1">Journal</a></li>
+<li><a href="#sec-8-13-1">Journal</a></li>
 </ul>
 </li>
-<li><a href="#sec-8-13">Git</a>
+<li><a href="#sec-8-14">Git</a>
 <ul>
-<li><a href="#sec-8-13-1">Magit</a></li>
+<li><a href="#sec-8-14-1">Magit</a></li>
 </ul>
 </li>
-<li><a href="#sec-8-14">Projectile</a></li>
-<li><a href="#sec-8-15">Perspective</a></li>
-<li><a href="#sec-8-16">ERC</a>
+<li><a href="#sec-8-15">Projectile</a></li>
+<li><a href="#sec-8-16">Perspective</a></li>
+<li><a href="#sec-8-17">ERC</a>
 <ul>
-<li><a href="#sec-8-16-1">Modules</a></li>
+<li><a href="#sec-8-17-1">Modules</a></li>
 </ul>
 </li>
-<li><a href="#sec-8-17">Ledger</a></li>
-<li><a href="#sec-8-18">Evil</a></li>
+<li><a href="#sec-8-18">Ledger</a></li>
+<li><a href="#sec-8-19">Evil</a></li>
 </ul>
 </li>
 </ul>
@@ -243,7 +244,7 @@ The latest raw version of this file can be found at <a href="https://github.com/
 </p>
 
 <p>
-This file was last exported: 2015-07-24 18:41
+This file was last exported: 2015-08-07 11:28
 </p>
 </div>
 </div>
@@ -287,7 +288,7 @@ can be loaded and where customizations done with <code>customize</code> should b
 <h3 id="sec-4-1">MELPA</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
-Add MELPA package archive
+Using bleeding edge? I, too, like to live dangerously.
 </p>
 <div class="org-src-container">
 
@@ -470,6 +471,7 @@ Install all packages here using <code>install-package</code>.
     ido-ubiquitous
     smex
     idomenu
+    ido-vertical-mode
 
     <span style="color: #40883f;">;;;; </span><span style="color: #40883f;">Window and frame management</span>
     buffer-move
@@ -769,7 +771,8 @@ highlighted when holding down movement keys.
 
 <pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span><span style="color: #989848;">dolist</span> <span style="color: #CCCCB7;">(</span>hook '<span style="color: #CCCCB7;">(</span>prog-mode-hook html-mode-hook<span style="color: #CCCCB7;">))</span>
   <span style="color: #CCCCB7;">(</span>add-hook hook 'highlight-symbol-mode<span style="color: #CCCCB7;">)</span>
-  <span style="color: #CCCCB7;">(</span>add-hook hook 'highlight-symbol-nav-mode<span style="color: #CCCCB7;">))</span>
+  <span style="color: #CCCCB7;">(</span>add-hook hook 'highlight-symbol-nav-mode<span style="color: #CCCCB7;">)</span>
+  <span style="color: #CCCCB7;">(</span>add-hook hook 'hs-minor-mode<span style="color: #CCCCB7;">))</span>
 
 <span style="color: #CCCCB7;">(</span><span style="color: #989848;">with-eval-after-load</span> 'highlight-symbol
   <span style="color: #CCCCB7;">(</span>diminish 'highlight-symbol-mode<span style="color: #CCCCB7;">))</span>
@@ -898,6 +901,17 @@ Highlight search results in the ag buffer.
 </div>
 
 <p>
+Render ido candidates vertically.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span>ido-vertical-mode t<span style="color: #CCCCB7;">)</span>
+<span style="color: #CCCCB7;">(</span>setq ido-vertical-define-keys 'C-n-and-C-p-only
+      ido-vertical-show-count t<span style="color: #CCCCB7;">)</span>
+</pre>
+</div>
+
+<p>
 Ignore dired buffers when using <code>ido-switch-buffer</code>, as we're only interested
 in actual file buffers (and some internal buffers).
 </p>
@@ -1017,32 +1031,7 @@ Enable <code>company-mode</code> globally.
 </div><div id="outline-container-sec-8-10-1" class="outline-4">
 <h4 id="sec-8-10-1">Python</h4>
 <div class="outline-text-4" id="text-8-10-1">
-<p>
-Custom outline folding.
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span><span style="color: #989848;">defun</span> <span style="color: #282828; font-weight: bold;">py-outline-level</span> <span style="color: #CCCCB7;">()</span>
-  <span style="color: #CCCCB7;">(</span><span style="color: #989848;">let</span> <span style="color: #CCCCB7;">(</span>buffer-invisibility-spec<span style="color: #CCCCB7;">)</span>
-    <span style="color: #CCCCB7;">(</span><span style="color: #989848;">save-excursion</span>
-      <span style="color: #CCCCB7;">(</span>skip-chars-forward <span style="color: #b85c57;">"\t "</span><span style="color: #CCCCB7;">)</span>
-      <span style="color: #CCCCB7;">(</span>current-column<span style="color: #CCCCB7;">))))</span>
-
-<span style="color: #CCCCB7;">(</span><span style="color: #989848;">defun</span> <span style="color: #282828; font-weight: bold;">my-python-hook</span> <span style="color: #CCCCB7;">()</span>
-  <span style="color: #40883f;">; </span><span style="color: #40883f;">outline uses this regexp to find headers. I match lines with no indent and indented "class"</span>
-  <span style="color: #40883f;">; </span><span style="color: #40883f;">and "def" lines.</span>
-  <span style="color: #CCCCB7;">(</span>setq outline-regexp <span style="color: #b85c57;">"[</span><span style="color: #b85c57; font-weight: bold;">^</span><span style="color: #b85c57;"> \t]</span><span style="color: #b85c57; font-weight: bold;">\\</span><span style="color: #b85c57; font-weight: bold;">|</span><span style="color: #b85c57;">[ \t]*</span><span style="color: #b85c57; font-weight: bold;">\\</span><span style="color: #b85c57; font-weight: bold;">(</span><span style="color: #b85c57;">def</span><span style="color: #b85c57; font-weight: bold;">\\</span><span style="color: #b85c57; font-weight: bold;">|</span><span style="color: #b85c57;">class</span><span style="color: #b85c57; font-weight: bold;">\\</span><span style="color: #b85c57; font-weight: bold;">)</span><span style="color: #b85c57;"> "</span><span style="color: #CCCCB7;">)</span>
-  <span style="color: #40883f;">; </span><span style="color: #40883f;">enable our level computation</span>
-  <span style="color: #CCCCB7;">(</span>setq outline-level 'py-outline-level<span style="color: #CCCCB7;">)</span>
-  <span style="color: #CCCCB7;">(</span>outline-minor-mode t<span style="color: #CCCCB7;">))</span>
-
-<span style="color: #CCCCB7;">(</span>add-hook 'python-mode-hook 'my-python-hook<span style="color: #CCCCB7;">)</span>
-</pre>
-</div>
-</div>
-
-<ul class="org-ul"><li><a id="sec-8-10-1-1" name="sec-8-10-1-1"></a>Anaconda<br  /><div class="outline-text-5" id="text-8-10-1-1">
+</div><ul class="org-ul"><li><a id="sec-8-10-1-1" name="sec-8-10-1-1"></a>Anaconda<br  /><div class="outline-text-5" id="text-8-10-1-1">
 <p>
 Use Anaconda with <code>company</code> for code completion.
 </p>
@@ -1302,8 +1291,38 @@ Use clojure-mode for Clojurescript.
 </div>
 
 <div id="outline-container-sec-8-11" class="outline-3">
-<h3 id="sec-8-11">Dired</h3>
+<h3 id="sec-8-11">Code Folding (HideShow)</h3>
 <div class="outline-text-3" id="text-8-11">
+<p>
+Show the contents of the first 40 characters of the folded text and the number of lines folded.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span>setq hs-set-up-overlay
+      <span style="color: #CCCCB7;">(</span><span style="color: #989848;">defun</span> <span style="color: #282828; font-weight: bold;">my-display-code-line-counts</span> <span style="color: #CCCCB7;">(</span>ov<span style="color: #CCCCB7;">)</span>
+        <span style="color: #CCCCB7;">(</span><span style="color: #989848;">when</span> <span style="color: #CCCCB7;">(</span>eq 'code <span style="color: #CCCCB7;">(</span>overlay-get ov 'hs<span style="color: #CCCCB7;">))</span>
+          <span style="color: #CCCCB7;">(</span>overlay-put ov 'display
+                       <span style="color: #CCCCB7;">(</span>propertize
+                        <span style="color: #CCCCB7;">(</span>format <span style="color: #b85c57;">" ... %s &lt;%d&gt; ... "</span>
+                                <span style="color: #CCCCB7;">(</span>replace-regexp-in-string
+                                 <span style="color: #b85c57;">"\n"</span> <span style="color: #b85c57;">""</span>
+                                 <span style="color: #CCCCB7;">(</span>replace-regexp-in-string
+                                  <span style="color: #b85c57;">"\\`[ \t]*"</span> <span style="color: #b85c57;">""</span>
+                                  <span style="color: #CCCCB7;">(</span>replace-regexp-in-string
+                                   <span style="color: #b85c57;">"[ \t]*\\'"</span> <span style="color: #b85c57;">""</span>
+                                   <span style="color: #CCCCB7;">(</span>buffer-substring <span style="color: #CCCCB7;">(</span>overlay-start ov<span style="color: #CCCCB7;">)</span>
+                                                     <span style="color: #CCCCB7;">(</span>+ <span style="color: #CCCCB7;">(</span>overlay-start ov<span style="color: #CCCCB7;">)</span> 40<span style="color: #CCCCB7;">)))))</span>
+                                <span style="color: #CCCCB7;">(</span>count-lines <span style="color: #CCCCB7;">(</span>overlay-start ov<span style="color: #CCCCB7;">)</span>
+                                             <span style="color: #CCCCB7;">(</span>overlay-end ov<span style="color: #CCCCB7;">)))</span>
+                        'face 'diff-removed<span style="color: #CCCCB7;">)))))</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-8-12" class="outline-3">
+<h3 id="sec-8-12">Dired</h3>
+<div class="outline-text-3" id="text-8-12">
 <p>
 Don't hide details in dired.
 </p>
@@ -1371,9 +1390,9 @@ Omit uninteresting files in <code>dired</code>.
 </div>
 </div>
 
-<div id="outline-container-sec-8-12" class="outline-3">
-<h3 id="sec-8-12">Org</h3>
-<div class="outline-text-3" id="text-8-12">
+<div id="outline-container-sec-8-13" class="outline-3">
+<h3 id="sec-8-13">Org</h3>
+<div class="outline-text-3" id="text-8-13">
 <p>
 Tell Org where our orgfiles are.
 </p>
@@ -1448,9 +1467,9 @@ Enable font-locking for org source blocks.
 </div>
 </div>
 
-<div id="outline-container-sec-8-12-1" class="outline-4">
-<h4 id="sec-8-12-1">Journal</h4>
-<div class="outline-text-4" id="text-8-12-1">
+<div id="outline-container-sec-8-13-1" class="outline-4">
+<h4 id="sec-8-13-1">Journal</h4>
+<div class="outline-text-4" id="text-8-13-1">
 <p>
 Experiment with <code>org-journal</code> for a personal diary of sorts.
 </p>
@@ -1463,9 +1482,9 @@ Experiment with <code>org-journal</code> for a personal diary of sorts.
 </div>
 </div>
 
-<div id="outline-container-sec-8-13" class="outline-3">
-<h3 id="sec-8-13">Git</h3>
-<div class="outline-text-3" id="text-8-13">
+<div id="outline-container-sec-8-14" class="outline-3">
+<h3 id="sec-8-14">Git</h3>
+<div class="outline-text-3" id="text-8-14">
 <p>
 Show git status indicators in the fringe.
 </p>
@@ -1485,9 +1504,9 @@ Show git status indicators in the fringe.
 </div>
 </div>
 
-<div id="outline-container-sec-8-13-1" class="outline-4">
-<h4 id="sec-8-13-1">Magit</h4>
-<div class="outline-text-4" id="text-8-13-1">
+<div id="outline-container-sec-8-14-1" class="outline-4">
+<h4 id="sec-8-14-1">Magit</h4>
+<div class="outline-text-4" id="text-8-14-1">
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp"><span style="color: #40883f;">;; </span><span style="color: #40883f;">skip warning introduced by 1.4.0</span>
@@ -1517,9 +1536,9 @@ Make the Magit buffer take the entire frame.
 </div>
 </div>
 
-<div id="outline-container-sec-8-14" class="outline-3">
-<h3 id="sec-8-14">Projectile</h3>
-<div class="outline-text-3" id="text-8-14">
+<div id="outline-container-sec-8-15" class="outline-3">
+<h3 id="sec-8-15">Projectile</h3>
+<div class="outline-text-3" id="text-8-15">
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span>projectile-global-mode<span style="color: #CCCCB7;">)</span>
@@ -1543,9 +1562,9 @@ Not actually projectile, but still project management related.
 </div>
 </div>
 
-<div id="outline-container-sec-8-15" class="outline-3">
-<h3 id="sec-8-15">Perspective</h3>
-<div class="outline-text-3" id="text-8-15">
+<div id="outline-container-sec-8-16" class="outline-3">
+<h3 id="sec-8-16">Perspective</h3>
+<div class="outline-text-3" id="text-8-16">
 <p>
 Use <code>perspective</code> to manage multiple projects.
 </p>
@@ -1563,9 +1582,19 @@ Use <code>perspective</code> to manage multiple projects.
 </div>
 </div>
 
-<div id="outline-container-sec-8-16" class="outline-3">
-<h3 id="sec-8-16">ERC</h3>
-<div class="outline-text-3" id="text-8-16">
+<div id="outline-container-sec-8-17" class="outline-3">
+<h3 id="sec-8-17">ERC</h3>
+<div class="outline-text-3" id="text-8-17">
+<p>
+Set some default values. We don't want to auto-reconnect since it could flood the channel and get us temporarily banned.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span>setq erc-nick <span style="color: #b85c57;">"john2x"</span>
+      erc-server-auto-reconnect nil<span style="color: #CCCCB7;">)</span>
+</pre>
+</div>
+
 <p>
 Change <code>header-line</code> face when disconnected.
 </p>
@@ -1647,11 +1676,20 @@ CAP request for SASL. Until <code>erc-sasl</code> gets merged into the main ERC 
 <pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span>add-to-list 'auth-sources <span style="color: #b85c57;">"~/.emacs.d/.ircauthinfo"</span><span style="color: #CCCCB7;">)</span>
 </pre>
 </div>
+
+<p>
+Set the prompt to use the channel name.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span>setq erc-prompt  <span style="color: #CCCCB7;">(</span><span style="color: #989848;">lambda</span> <span style="color: #CCCCB7;">()</span> <span style="color: #CCCCB7;">(</span>concat <span style="color: #CCCCB7;">(</span>buffer-name<span style="color: #CCCCB7;">)</span> <span style="color: #b85c57;">"&gt; "</span><span style="color: #CCCCB7;">)))</span>
+</pre>
+</div>
 </div>
 
-<div id="outline-container-sec-8-16-1" class="outline-4">
-<h4 id="sec-8-16-1">Modules</h4>
-<div class="outline-text-4" id="text-8-16-1">
+<div id="outline-container-sec-8-17-1" class="outline-4">
+<h4 id="sec-8-17-1">Modules</h4>
+<div class="outline-text-4" id="text-8-17-1">
 <p>
 Highlight nicknames so they're easier to spot.
 </p>
@@ -1691,9 +1729,6 @@ Render smiley icons, because why not <code>:-)</code>?
 </pre>
 </div>
 
-<p>
-Update erc modules.
-</p>
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span>erc-update-modules<span style="color: #CCCCB7;">)</span>
@@ -1703,9 +1738,9 @@ Update erc modules.
 </div>
 </div>
 
-<div id="outline-container-sec-8-17" class="outline-3">
-<h3 id="sec-8-17">Ledger</h3>
-<div class="outline-text-3" id="text-8-17">
+<div id="outline-container-sec-8-18" class="outline-3">
+<h3 id="sec-8-18">Ledger</h3>
+<div class="outline-text-3" id="text-8-18">
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span><span style="color: #989848;">defconst</span> <span style="color: #4fa8a8;">*ledger-journal-path*</span> <span style="color: #b85c57;">"~/Dropbox/ledger/john.ledger"</span><span style="color: #CCCCB7;">)</span>
@@ -1733,9 +1768,9 @@ Update erc modules.
 </div>
 </div>
 </div>
-<div id="outline-container-sec-8-18" class="outline-3">
-<h3 id="sec-8-18">Evil</h3>
-<div class="outline-text-3" id="text-8-18">
+<div id="outline-container-sec-8-19" class="outline-3">
+<h3 id="sec-8-19">Evil</h3>
+<div class="outline-text-3" id="text-8-19">
 <p>
 Bind <code>&lt;F12&gt;</code> to toggle <code>evil-local-mode</code>.
 </p>
@@ -1843,7 +1878,7 @@ Copied from <a href="http://doc.rix.si/org/fsem.html">http://doc.rix.si/org/fsem
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: John Del Rosario</p>
-<p class="date">Created: 2015-07-24 Fri 18:41</p>
+<p class="date">Created: 2015-08-07 Fri 11:28</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
