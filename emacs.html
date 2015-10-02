@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-08-30 Sun 21:58 -->
+<!-- 2015-10-01 Thu 20:58 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>John's Emacs Config</title>
@@ -187,7 +187,7 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#orgheadline19">Font</a></li>
 <li><a href="#orgheadline20">Theme</a></li>
-<li><a href="#orgheadline21">Mode line (<code>smart-mode-line</code>)</a></li>
+<li><a href="#orgheadline21">Mode line</a></li>
 </ul>
 </li>
 <li><a href="#orgheadline22">Ag</a></li>
@@ -217,16 +217,16 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline42">Dired</a></li>
 <li><a href="#orgheadline43">Org</a>
 <ul>
-<li><a href="#orgheadline44">Journal</a></li>
+<li><a href="#orgheadline44">Publishing</a></li>
+<li><a href="#orgheadline45">Journal</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline45">Git</a>
+<li><a href="#orgheadline46">Git</a>
 <ul>
-<li><a href="#orgheadline46">Magit</a></li>
+<li><a href="#orgheadline47">Magit</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline47">Projectile</a></li>
-<li><a href="#orgheadline48">Perspective</a></li>
+<li><a href="#orgheadline48">Projectile</a></li>
 <li><a href="#orgheadline49">ERC</a>
 <ul>
 <li><a href="#orgheadline50">Modules</a></li>
@@ -252,7 +252,7 @@ The latest raw version of this file can be found at <a href="https://github.com/
 </p>
 
 <p>
-This file was last exported: 2015-08-30 21:58
+This file was last exported: 2015-10-01 20:58
 </p>
 </div>
 </div>
@@ -470,6 +470,7 @@ Install all packages here using <code>install-package</code>.
     yascroll
     highlight-symbol
     smooth-scroll
+    nlinum
 
     <span style="color: #40883f;">;;;; </span><span style="color: #40883f;">ido, ~M-x~</span>
     flx-ido
@@ -488,6 +489,7 @@ Install all packages here using <code>install-package</code>.
 
     <span style="color: #40883f;">;;;; </span><span style="color: #40883f;">Completion</span>
     company
+    company-emoji
 
     <span style="color: #40883f;">;;;; </span><span style="color: #40883f;">Linting</span>
     flycheck
@@ -749,8 +751,8 @@ Configure UI stuff like:
 <span style="color: #40883f;">;; </span><span style="color: #40883f;">highlight matching parentheses</span>
 <span style="color: #CCCCB7;">(</span>show-paren-mode 1<span style="color: #CCCCB7;">)</span>
 
-<span style="color: #40883f;">;; </span><span style="color: #40883f;">show line numbers</span>
-<span style="color: #CCCCB7;">(</span>global-linum-mode<span style="color: #CCCCB7;">)</span>
+<span style="color: #40883f;">;; </span><span style="color: #40883f;">show line numbers (use nlinum-mode; linum-mode is slow)</span>
+<span style="color: #CCCCB7;">(</span>global-nlinum-mode<span style="color: #CCCCB7;">)</span>
 
 <span style="color: #40883f;">;; </span><span style="color: #40883f;">we use yascroll for the scrollbar instead</span>
 <span style="color: #CCCCB7;">(</span>scroll-bar-mode -1<span style="color: #CCCCB7;">)</span>
@@ -815,7 +817,12 @@ highlighted when holding down movement keys.
 <pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span><span style="color: #989848;">defvar</span> <span style="color: #4fa8a8;">Input-font</span> '<span style="color: #CCCCB7;">(</span><span style="color: #282828; font-weight: bold;">:family</span> <span style="color: #b85c57;">"Input"</span> <span style="color: #282828; font-weight: bold;">:size</span> 12<span style="color: #CCCCB7;">))</span>
 <span style="color: #CCCCB7;">(</span><span style="color: #989848;">defvar</span> <span style="color: #4fa8a8;">PragmataPro-font</span> '<span style="color: #CCCCB7;">(</span><span style="color: #282828; font-weight: bold;">:family</span> <span style="color: #b85c57;">"Essential PragmataPro"</span> <span style="color: #282828; font-weight: bold;">:size</span> 12<span style="color: #CCCCB7;">))</span>
 
-<span style="color: #CCCCB7;">(</span>set-frame-font <span style="color: #CCCCB7;">(</span>apply 'font-spec Input-font<span style="color: #CCCCB7;">)</span> nil t<span style="color: #CCCCB7;">)</span>
+<span style="color: #CCCCB7;">(</span>set-frame-font <span style="color: #CCCCB7;">(</span>apply 'font-spec PragmataPro-font<span style="color: #CCCCB7;">)</span> nil t<span style="color: #CCCCB7;">)</span>
+
+<span style="color: #CCCCB7;">(</span><span style="color: #989848;">when</span> *is-a-mac*
+  <span style="color: #CCCCB7;">(</span>set-fontset-font
+     t 'symbol
+     <span style="color: #CCCCB7;">(</span>font-spec <span style="color: #282828; font-weight: bold;">:family</span> <span style="color: #b85c57;">"Apple Color Emoji"</span><span style="color: #CCCCB7;">)</span> nil 'prepend<span style="color: #CCCCB7;">))</span>
 </pre>
 </div>
 
@@ -850,43 +857,11 @@ Theme of the month.
 </div>
 
 <div id="outline-container-orgheadline21" class="outline-4">
-<h4 id="orgheadline21">Mode line (<code>smart-mode-line</code>)</h4>
+<h4 id="orgheadline21">Mode line</h4>
 <div class="outline-text-4" id="text-orgheadline21">
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span>which-function-mode<span style="color: #CCCCB7;">)</span>
-
-<span style="color: #CCCCB7;">(</span>sml/setup<span style="color: #CCCCB7;">)</span>
-
-<span style="color: #CCCCB7;">(</span>setq sml/name-width 20
-      sml/mode-width 10
-      sml/theme nil<span style="color: #CCCCB7;">)</span>
-
-<span style="color: #CCCCB7;">(</span>add-to-list 'sml/hidden-modes <span style="color: #b85c57;">" GG"</span><span style="color: #CCCCB7;">)</span>
-<span style="color: #CCCCB7;">(</span>add-to-list 'sml/hidden-modes <span style="color: #b85c57;">" wg"</span><span style="color: #CCCCB7;">)</span>
-<span style="color: #CCCCB7;">(</span>add-to-list 'sml/hidden-modes <span style="color: #b85c57;">" ElDoc"</span><span style="color: #CCCCB7;">)</span>
-<span style="color: #CCCCB7;">(</span>add-to-list 'sml/hidden-modes <span style="color: #b85c57;">" AC"</span><span style="color: #CCCCB7;">)</span>
-<span style="color: #CCCCB7;">(</span>add-to-list 'sml/hidden-modes <span style="color: #b85c57;">" WSC"</span><span style="color: #CCCCB7;">)</span>
-<span style="color: #CCCCB7;">(</span>add-to-list 'sml/hidden-modes <span style="color: #b85c57;">" Outl"</span><span style="color: #CCCCB7;">)</span>
-<span style="color: #CCCCB7;">(</span>add-to-list 'sml/hidden-modes <span style="color: #b85c57;">" hs"</span><span style="color: #CCCCB7;">)</span>
-<span style="color: #CCCCB7;">(</span>add-to-list 'sml/hidden-modes <span style="color: #b85c57;">" Midje"</span><span style="color: #CCCCB7;">)</span>
-<span style="color: #CCCCB7;">(</span>add-to-list 'sml/hidden-modes <span style="color: #b85c57;">" cider"</span><span style="color: #CCCCB7;">)</span>
-<span style="color: #CCCCB7;">(</span>add-to-list 'sml/hidden-modes <span style="color: #b85c57;">" Par"</span><span style="color: #CCCCB7;">)</span>
-
-<span style="color: #CCCCB7;">(</span>add-to-list 'sml/replacer-regexp-list '<span style="color: #CCCCB7;">(</span><span style="color: #b85c57;">"^~/Projects/"</span> <span style="color: #b85c57;">":PRJ:"</span><span style="color: #CCCCB7;">))</span>
-
-<span style="color: #CCCCB7;">(</span>add-hook 'emacs-lisp-mode-hook
-  <span style="color: #CCCCB7;">(</span><span style="color: #989848;">lambda</span><span style="color: #CCCCB7;">()</span>
-    <span style="color: #CCCCB7;">(</span>setq mode-name <span style="color: #b85c57;">"el"</span><span style="color: #CCCCB7;">)))</span>
-<span style="color: #CCCCB7;">(</span>add-hook 'python-mode-hook
-  <span style="color: #CCCCB7;">(</span><span style="color: #989848;">lambda</span><span style="color: #CCCCB7;">()</span>
-    <span style="color: #CCCCB7;">(</span>setq mode-name <span style="color: #b85c57;">"py"</span><span style="color: #CCCCB7;">)))</span>
-<span style="color: #CCCCB7;">(</span>add-hook 'clojure-mode-hook
-  <span style="color: #CCCCB7;">(</span><span style="color: #989848;">lambda</span><span style="color: #CCCCB7;">()</span>
-    <span style="color: #CCCCB7;">(</span>setq mode-name <span style="color: #b85c57;">"clj"</span><span style="color: #CCCCB7;">)))</span>
-<span style="color: #CCCCB7;">(</span>add-hook 'erlang-mode-hook
-  <span style="color: #CCCCB7;">(</span><span style="color: #989848;">lambda</span><span style="color: #CCCCB7;">()</span>
-    <span style="color: #CCCCB7;">(</span>setq mode-name <span style="color: #b85c57;">"erl"</span><span style="color: #CCCCB7;">)))</span>
 </pre>
 </div>
 </div>
@@ -1507,11 +1482,44 @@ Enable font-locking for org source blocks.
 <pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span>setq org-src-fontify-natively t<span style="color: #CCCCB7;">)</span>
 </pre>
 </div>
+
+<p>
+Don't evaluate source blocks when exporting.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span>setq org-export-babel-evaluate nil<span style="color: #CCCCB7;">)</span>
+</pre>
+</div>
 </div>
 
 <div id="outline-container-orgheadline44" class="outline-4">
-<h4 id="orgheadline44">Journal</h4>
+<h4 id="orgheadline44">Publishing</h4>
 <div class="outline-text-4" id="text-orgheadline44">
+<p>
+Configure publishing of our orgfiles.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span>setq org-publish-project-alist
+      `<span style="color: #CCCCB7;">((</span><span style="color: #b85c57;">"orgfiles"</span>
+         <span style="color: #282828; font-weight: bold;">:base-directory</span> <span style="color: #b85c57;">"~/Dropbox/orgfiles"</span>
+         <span style="color: #282828; font-weight: bold;">:publishing-directory</span> <span style="color: #b85c57;">"~/Dropbox/orgfiles/published"</span>
+         <span style="color: #282828; font-weight: bold;">:publishing-function</span> org-html-publish-to-html
+         <span style="color: #282828; font-weight: bold;">:section-numbers</span> nil
+         <span style="color: #282828; font-weight: bold;">:table-of-contents</span> nil
+         <span style="color: #282828; font-weight: bold;">:recursive</span> t
+         <span style="color: #282828; font-weight: bold;">:auto-sitemap</span> t
+         <span style="color: #282828; font-weight: bold;">:sitemap-filename</span> <span style="color: #b85c57;">"sitemap.org"</span>
+         <span style="color: #282828; font-weight: bold;">:sitemap-title</span> <span style="color: #b85c57;">"orgfiles"</span><span style="color: #CCCCB7;">)))</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline45" class="outline-4">
+<h4 id="orgheadline45">Journal</h4>
+<div class="outline-text-4" id="text-orgheadline45">
 <p>
 Experiment with <code>org-journal</code> for a personal diary of sorts.
 </p>
@@ -1524,9 +1532,9 @@ Experiment with <code>org-journal</code> for a personal diary of sorts.
 </div>
 </div>
 
-<div id="outline-container-orgheadline45" class="outline-3">
-<h3 id="orgheadline45">Git</h3>
-<div class="outline-text-3" id="text-orgheadline45">
+<div id="outline-container-orgheadline46" class="outline-3">
+<h3 id="orgheadline46">Git</h3>
+<div class="outline-text-3" id="text-orgheadline46">
 <p>
 Show git status indicators in the fringe.
 </p>
@@ -1546,9 +1554,9 @@ Show git status indicators in the fringe.
 </div>
 </div>
 
-<div id="outline-container-orgheadline46" class="outline-4">
-<h4 id="orgheadline46">Magit</h4>
-<div class="outline-text-4" id="text-orgheadline46">
+<div id="outline-container-orgheadline47" class="outline-4">
+<h4 id="orgheadline47">Magit</h4>
+<div class="outline-text-4" id="text-orgheadline47">
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp"><span style="color: #40883f;">;; </span><span style="color: #40883f;">skip warning introduced by 1.4.0</span>
@@ -1578,18 +1586,23 @@ Make the Magit buffer take the entire frame.
 </div>
 </div>
 
-<div id="outline-container-orgheadline47" class="outline-3">
-<h3 id="orgheadline47">Projectile</h3>
-<div class="outline-text-3" id="text-orgheadline47">
+<div id="outline-container-orgheadline48" class="outline-3">
+<h3 id="orgheadline48">Projectile</h3>
+<div class="outline-text-3" id="text-orgheadline48">
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span>projectile-global-mode<span style="color: #CCCCB7;">)</span>
+<span style="color: #CCCCB7;">(</span>persp-mode<span style="color: #CCCCB7;">)</span>
 
 <span style="color: #CCCCB7;">(</span>setq projectile-switch-project-action 'projectile-dired
       projectile-completion-system 'ido
       projectile-enable-caching t<span style="color: #CCCCB7;">)</span>
 
 <span style="color: #CCCCB7;">(</span>global-set-key <span style="color: #CCCCB7;">(</span>kbd <span style="color: #b85c57;">"C-x p"</span><span style="color: #CCCCB7;">)</span> 'projectile-find-file<span style="color: #CCCCB7;">)</span>
+
+<span style="color: #CCCCB7;">(</span><span style="color: #989848;">require</span> '<span style="color: #989848; font-weight: bold;">nameframe-projectile</span><span style="color: #CCCCB7;">)</span>
+<span style="color: #CCCCB7;">(</span><span style="color: #989848;">require</span> '<span style="color: #989848; font-weight: bold;">nameframe-perspective</span><span style="color: #CCCCB7;">)</span>
+<span style="color: #CCCCB7;">(</span>global-set-key <span style="color: #CCCCB7;">(</span>kbd <span style="color: #b85c57;">"M-P"</span><span style="color: #CCCCB7;">)</span> 'nameframe-switch-frame<span style="color: #CCCCB7;">)</span>
 </pre>
 </div>
 
@@ -1604,25 +1617,6 @@ Not actually projectile, but still project management related.
 </div>
 </div>
 
-<div id="outline-container-orgheadline48" class="outline-3">
-<h3 id="orgheadline48">Perspective</h3>
-<div class="outline-text-3" id="text-orgheadline48">
-<p>
-Use <code>perspective</code> to manage multiple projects.
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span><span style="color: #989848;">require</span> '<span style="color: #989848; font-weight: bold;">persp-projectile</span><span style="color: #CCCCB7;">)</span>
-<span style="color: #CCCCB7;">(</span>persp-mode<span style="color: #CCCCB7;">)</span>
-
-<span style="color: #CCCCB7;">(</span>global-set-key <span style="color: #CCCCB7;">(</span>kbd <span style="color: #b85c57;">"M-["</span><span style="color: #CCCCB7;">)</span> 'persp-prev<span style="color: #CCCCB7;">)</span>
-<span style="color: #CCCCB7;">(</span>global-set-key <span style="color: #CCCCB7;">(</span>kbd <span style="color: #b85c57;">"M-]"</span><span style="color: #CCCCB7;">)</span> 'persp-next<span style="color: #CCCCB7;">)</span>
-<span style="color: #CCCCB7;">(</span>global-set-key <span style="color: #CCCCB7;">(</span>kbd <span style="color: #b85c57;">"M-P"</span><span style="color: #CCCCB7;">)</span> 'persp-switch<span style="color: #CCCCB7;">)</span>
-</pre>
-</div>
-</div>
-</div>
 
 <div id="outline-container-orgheadline49" class="outline-3">
 <h3 id="orgheadline49">ERC</h3>
@@ -1862,6 +1856,7 @@ Then we specify which modes we want Normal state for.
     css-mode
     js2-mode
     js-mode
+    json-mode
     html-mode
     ledger-mode
     yaml-mode
@@ -1960,7 +1955,7 @@ Copied from <a href="http://doc.rix.si/org/fsem.html">http://doc.rix.si/org/fsem
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: John Del Rosario</p>
-<p class="date">Created: 2015-08-30 Sun 21:58</p>
+<p class="date">Created: 2015-10-01 Thu 20:58</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
