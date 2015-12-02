@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-10-01 Thu 20:58 -->
+<!-- 2015-12-02 Wed 13:36 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>John's Emacs Config</title>
@@ -232,8 +232,9 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline50">Modules</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline51">Ledger</a></li>
-<li><a href="#orgheadline52">Evil</a></li>
+<li><a href="#orgheadline51">Mail</a></li>
+<li><a href="#orgheadline52">Ledger</a></li>
+<li><a href="#orgheadline53">Evil</a></li>
 </ul>
 </li>
 </ul>
@@ -252,7 +253,7 @@ The latest raw version of this file can be found at <a href="https://github.com/
 </p>
 
 <p>
-This file was last exported: 2015-10-01 20:58
+This file was last exported: 2015-12-02 13:36
 </p>
 </div>
 </div>
@@ -302,7 +303,7 @@ Using bleeding edge? I, too, like to live dangerously.
 
 <pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span><span style="color: #989848;">require</span> '<span style="color: #989848; font-weight: bold;">package</span><span style="color: #CCCCB7;">)</span>
 <span style="color: #CCCCB7;">(</span>add-to-list 'package-archives
-  '<span style="color: #CCCCB7;">(</span><span style="color: #b85c57;">"melpa"</span> . <span style="color: #b85c57;">"http://melpa.org/packages/"</span><span style="color: #CCCCB7;">)</span> t<span style="color: #CCCCB7;">)</span>
+  '<span style="color: #CCCCB7;">(</span><span style="color: #b85c57;">"melpa"</span> . <span style="color: #b85c57;">"https://melpa.org/packages/"</span><span style="color: #CCCCB7;">)</span> t<span style="color: #CCCCB7;">)</span>
 <span style="color: #CCCCB7;">(</span>package-initialize<span style="color: #CCCCB7;">)</span>
 </pre>
 </div>
@@ -424,6 +425,16 @@ Conditionally set the following when on OS X (see <b>Constants</b>):
                                     <span style="color: #CCCCB7;">((</span>control<span style="color: #CCCCB7;">)))))</span>
 </pre>
 </div>
+
+<p>
+The following adds packages installed by Homebrew to our load-path.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span><span style="color: #989848;">let</span> <span style="color: #CCCCB7;">((</span>default-directory <span style="color: #b85c57;">"/usr/local/share/emacs/site-lisp/"</span><span style="color: #CCCCB7;">))</span>
+  <span style="color: #CCCCB7;">(</span>normal-top-level-add-subdirs-to-load-path<span style="color: #CCCCB7;">))</span>
+</pre>
+</div>
 </div>
 </div>
 
@@ -460,6 +471,9 @@ Install all packages here using <code>install-package</code>.
     exec-path-from-shell
     undo-tree
     bind-key
+    nameframe
+    avy
+    link-hint
 
     <span style="color: #40883f;">;;;; </span><span style="color: #40883f;">Mode-line</span>
     diminish
@@ -512,9 +526,11 @@ Install all packages here using <code>install-package</code>.
     projectile
     flx
     project-explorer
+    nameframe-projectile
 
     <span style="color: #40883f;">;;;; </span><span style="color: #40883f;">Perspective</span>
     perspective
+    nameframe-perspective
 
     <span style="color: #40883f;">;;;; </span><span style="color: #40883f;">Evil (Vim)</span>
     evil
@@ -564,6 +580,7 @@ Install all packages here using <code>install-package</code>.
     flycheck-haskell
     purescript-mode
     elm-mode
+    mu4e-alert
 
     <span style="color: #40883f;">;;;;;; </span><span style="color: #40883f;">Org</span>
     htmlize
@@ -1567,7 +1584,8 @@ Show git status indicators in the fringe.
  magit-process-popup-time 10
  magit-diff-refine-hunk t
  magit-restore-window-configuration t
- magit-completing-read-function 'magit-ido-completing-read<span style="color: #CCCCB7;">)</span>
+ magit-completing-read-function 'magit-ido-completing-read
+ magit-revert-buffers nil<span style="color: #CCCCB7;">)</span>
 
 <span style="color: #CCCCB7;">(</span>global-set-key <span style="color: #CCCCB7;">(</span>kbd <span style="color: #b85c57;">"C-c m m"</span><span style="color: #CCCCB7;">)</span> 'magit-status<span style="color: #CCCCB7;">)</span>
 </pre>
@@ -1600,8 +1618,8 @@ Make the Magit buffer take the entire frame.
 
 <span style="color: #CCCCB7;">(</span>global-set-key <span style="color: #CCCCB7;">(</span>kbd <span style="color: #b85c57;">"C-x p"</span><span style="color: #CCCCB7;">)</span> 'projectile-find-file<span style="color: #CCCCB7;">)</span>
 
-<span style="color: #CCCCB7;">(</span><span style="color: #989848;">require</span> '<span style="color: #989848; font-weight: bold;">nameframe-projectile</span><span style="color: #CCCCB7;">)</span>
-<span style="color: #CCCCB7;">(</span><span style="color: #989848;">require</span> '<span style="color: #989848; font-weight: bold;">nameframe-perspective</span><span style="color: #CCCCB7;">)</span>
+<span style="color: #CCCCB7;">(</span>nameframe-projectile-mode t<span style="color: #CCCCB7;">)</span>
+<span style="color: #CCCCB7;">(</span>nameframe-perspective-mode t<span style="color: #CCCCB7;">)</span>
 <span style="color: #CCCCB7;">(</span>global-set-key <span style="color: #CCCCB7;">(</span>kbd <span style="color: #b85c57;">"M-P"</span><span style="color: #CCCCB7;">)</span> 'nameframe-switch-frame<span style="color: #CCCCB7;">)</span>
 </pre>
 </div>
@@ -1616,7 +1634,6 @@ Not actually projectile, but still project management related.
 </div>
 </div>
 </div>
-
 
 <div id="outline-container-orgheadline49" class="outline-3">
 <h3 id="orgheadline49">ERC</h3>
@@ -1651,17 +1668,18 @@ Change <code>header-line</code> face when disconnected.
 </div>
 
 <p>
-Interactive function to create a new frame and perspectives for erc and automatically connect to preset servers.
+Interactive function to create a frame dedicated to ERC and automatically connect to preset servers.
 (We don't join channels automatically as it could take too long.)
 </p>
+
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span><span style="color: #989848;">defun</span> <span style="color: #282828; font-weight: bold;">my-erc-perspective</span> <span style="color: #CCCCB7;">()</span>
-  <span style="color: #40883f;">"Switch or create to a perspective called 'erc' and connect to IRC"</span>
+<pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span><span style="color: #989848;">defun</span> <span style="color: #282828; font-weight: bold;">my-erc-frame</span> <span style="color: #CCCCB7;">()</span>
+  <span style="color: #40883f;">"Switch or create to a frame called 'ERC' and connect to IRC"</span>
   <span style="color: #CCCCB7;">(</span>interactive<span style="color: #CCCCB7;">)</span>
-  <span style="color: #CCCCB7;">(</span>select-frame <span style="color: #CCCCB7;">(</span>make-frame '<span style="color: #CCCCB7;">((</span>name . <span style="color: #b85c57;">"ERC"</span><span style="color: #CCCCB7;">)</span> <span style="color: #CCCCB7;">(</span>minibuffer . t<span style="color: #CCCCB7;">))))</span>
-  <span style="color: #CCCCB7;">(</span>persp-switch <span style="color: #b85c57;">"freenode.net"</span><span style="color: #CCCCB7;">)</span>
-  <span style="color: #CCCCB7;">(</span>erc <span style="color: #282828; font-weight: bold;">:server</span> <span style="color: #b85c57;">"irc.freenode.net"</span> <span style="color: #282828; font-weight: bold;">:port</span> <span style="color: #b85c57;">"6667"</span> <span style="color: #282828; font-weight: bold;">:nick</span> <span style="color: #b85c57;">"john2x"</span><span style="color: #CCCCB7;">))</span>
+  <span style="color: #CCCCB7;">(</span>nameframe-with-frame <span style="color: #b85c57;">"ERC"</span>
+    <span style="color: #CCCCB7;">(</span>persp-switch <span style="color: #b85c57;">"freenode.net"</span><span style="color: #CCCCB7;">)</span>
+    <span style="color: #CCCCB7;">(</span>erc <span style="color: #282828; font-weight: bold;">:server</span> <span style="color: #b85c57;">"irc.freenode.net"</span> <span style="color: #282828; font-weight: bold;">:port</span> <span style="color: #b85c57;">"6667"</span> <span style="color: #282828; font-weight: bold;">:nick</span> <span style="color: #b85c57;">"john2x"</span><span style="color: #CCCCB7;">)))</span>
 </pre>
 </div>
 
@@ -1775,8 +1793,318 @@ Render smiley icons, because why not <code>:-)</code>?
 </div>
 
 <div id="outline-container-orgheadline51" class="outline-3">
-<h3 id="orgheadline51">Ledger</h3>
+<h3 id="orgheadline51">Mail</h3>
 <div class="outline-text-3" id="text-orgheadline51">
+<p>
+<code>mu4e</code> is a mail client for Emacs. It works in conjunction with <code>offlineimap</code>
+to provide a nice interface to read and send mail. Note that <code>mu4e</code> is installed
+via OS package manager (i.e. Homebrew).
+</p>
+
+<p>
+Set some default variables.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span><span style="color: #989848;">require</span> '<span style="color: #989848; font-weight: bold;">mu4e</span><span style="color: #CCCCB7;">)</span>
+<span style="color: #CCCCB7;">(</span><span style="color: #989848;">require</span> '<span style="color: #989848; font-weight: bold;">smtpmail</span><span style="color: #CCCCB7;">)</span>
+<span style="color: #CCCCB7;">(</span><span style="color: #989848;">require</span> '<span style="color: #989848; font-weight: bold;">starttls</span><span style="color: #CCCCB7;">)</span>
+
+<span style="color: #CCCCB7;">(</span>setq mu4e-update-interval 150<span style="color: #CCCCB7;">)</span>
+
+<span style="color: #CCCCB7;">(</span>setq user-mail-address <span style="color: #b85c57;">"john2x@gmail.com"</span>
+      user-full-name  <span style="color: #b85c57;">"John Del Rosario"</span>
+      mu4e-compose-signature <span style="color: #b85c57;">"john2x.com\nSent from GNU Emacs"</span><span style="color: #CCCCB7;">)</span>
+
+<span style="color: #CCCCB7;">(</span>setq mu4e-maildir <span style="color: #b85c57;">"~/mail"</span>
+      mu4e-sent-folder <span style="color: #b85c57;">"/personal/[Gmail]/Sent Mail"</span>
+      mu4e-drafts-folder <span style="color: #b85c57;">"/personal/drafts"</span>
+      mu4e-trash-folder <span style="color: #b85c57;">"/personal/[Gmail]/Trash"</span>
+      mu4e-refile-folder <span style="color: #b85c57;">"/personal/archive"</span><span style="color: #CCCCB7;">)</span>
+
+<span style="color: #CCCCB7;">(</span>setq mu4e-headers-skip-duplicates t<span style="color: #CCCCB7;">)</span>
+
+<span style="color: #40883f;">;; </span><span style="color: #40883f;">don't save message to Sent Messages, Gmail/IMAP takes care of this</span>
+<span style="color: #CCCCB7;">(</span>setq mu4e-sent-messages-behavior 'delete<span style="color: #CCCCB7;">)</span>
+
+<span style="color: #40883f;">;; </span><span style="color: #40883f;">set mu4e as the default mail program</span>
+<span style="color: #CCCCB7;">(</span>setq mail-user-agent 'mu4e-user-agent<span style="color: #CCCCB7;">)</span>
+
+<span style="color: #40883f;">;; </span><span style="color: #40883f;">kill compose buffer instead of just hiding it</span>
+<span style="color: #CCCCB7;">(</span>setq message-kill-buffer-on-exit t<span style="color: #CCCCB7;">)</span>
+
+<span style="color: #CCCCB7;">(</span>setq mu4e-view-show-addresses t<span style="color: #CCCCB7;">)</span>
+<span style="color: #CCCCB7;">(</span>setq mu4e-attachment-dir <span style="color: #b85c57;">"~/Downloads/Attachments/"</span><span style="color: #CCCCB7;">)</span>
+
+<span style="color: #40883f;">;; </span><span style="color: #40883f;">disable trailing whitespace when in mu4e</span>
+<span style="color: #CCCCB7;">(</span>add-hook 'mu4e-headers-mode-hook <span style="color: #CCCCB7;">(</span><span style="color: #989848;">lambda</span> <span style="color: #CCCCB7;">()</span> <span style="color: #CCCCB7;">(</span>setq-local show-trailing-whitespace nil<span style="color: #CCCCB7;">)))</span>
+<span style="color: #CCCCB7;">(</span>add-hook 'mu4e-view-mode-hook <span style="color: #CCCCB7;">(</span><span style="color: #989848;">lambda</span> <span style="color: #CCCCB7;">()</span> <span style="color: #CCCCB7;">(</span>setq-local show-trailing-whitespace nil<span style="color: #CCCCB7;">)))</span>
+
+<span style="color: #CCCCB7;">(</span>setq message-send-mail-function 'smtpmail-send-it
+      smtpmail-stream-type 'starttls
+      smtpmail-default-smtp-server <span style="color: #b85c57;">"smtp.gmail.com"</span>
+      smtpmail-smtp-server <span style="color: #b85c57;">"smtp.gmail.com"</span>
+      smtpmail-smtp-user <span style="color: #b85c57;">"john2x@gmail.com"</span>
+      smtpmail-smtp-service 587
+      starttls-extra-arguments '<span style="color: #CCCCB7;">(</span><span style="color: #b85c57;">"--x509cafile"</span> <span style="color: #b85c57;">"/usr/local/etc/openssl/cert.pem"</span><span style="color: #CCCCB7;">))</span>
+</pre>
+</div>
+
+<p>
+Define multiple email accounts so we can switch between them.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span>setq mu4e-user-mail-address-list '<span style="color: #CCCCB7;">(</span><span style="color: #b85c57;">"john2x@gmail.com"</span>
+                                    <span style="color: #b85c57;">"john@collabspot.com"</span>
+                                    <span style="color: #b85c57;">"john@prospecthive.com"</span><span style="color: #CCCCB7;">))</span>
+
+<span style="color: #CCCCB7;">(</span><span style="color: #989848;">defvar</span> <span style="color: #4fa8a8;">my-mu4e-account-alist</span>
+  '<span style="color: #CCCCB7;">((</span><span style="color: #b85c57;">"personal"</span>
+     <span style="color: #CCCCB7;">(</span>mu4e-sent-folder <span style="color: #b85c57;">"/personal/[Gmail]/Sent Mail"</span><span style="color: #CCCCB7;">)</span>
+     <span style="color: #CCCCB7;">(</span>mu4e-drafts-folder <span style="color: #b85c57;">"/personal/drafts"</span><span style="color: #CCCCB7;">)</span>
+     <span style="color: #CCCCB7;">(</span>mu4e-compose-signature <span style="color: #b85c57;">"john2x.com\nSent from GNU Emacs"</span><span style="color: #CCCCB7;">)</span>
+     <span style="color: #CCCCB7;">(</span>user-mail-address <span style="color: #b85c57;">"john2x@gmail.com"</span><span style="color: #CCCCB7;">)</span>
+     <span style="color: #CCCCB7;">(</span>smtpmail-smtp-user <span style="color: #b85c57;">"john2x@gmail.com"</span><span style="color: #CCCCB7;">)</span>
+     <span style="color: #CCCCB7;">(</span>smtpmail-default-smtp-server <span style="color: #b85c57;">"smtp.gmail.com"</span><span style="color: #CCCCB7;">)</span>
+     <span style="color: #CCCCB7;">(</span>smtpmail-smtp-server <span style="color: #b85c57;">"smtp.gmail.com"</span><span style="color: #CCCCB7;">)</span>
+     <span style="color: #CCCCB7;">(</span>smtpmail-stream-type starttls<span style="color: #CCCCB7;">)</span>
+     <span style="color: #CCCCB7;">(</span>smtpmail-smtp-service 587<span style="color: #CCCCB7;">))</span>
+    <span style="color: #CCCCB7;">(</span><span style="color: #b85c57;">"collabspot"</span>
+     <span style="color: #CCCCB7;">(</span>mu4e-sent-folder <span style="color: #b85c57;">"/collabspot/[Gmail]/Sent Mail"</span><span style="color: #CCCCB7;">)</span>
+     <span style="color: #CCCCB7;">(</span>mu4e-drafts-folder <span style="color: #b85c57;">"/collabspot/drafts"</span><span style="color: #CCCCB7;">)</span>
+     <span style="color: #CCCCB7;">(</span>mu4e-compose-signature <span style="color: #b85c57;">"collabspot.com\nSent from GNU Emacs"</span><span style="color: #CCCCB7;">)</span>
+     <span style="color: #CCCCB7;">(</span>user-mail-address <span style="color: #b85c57;">"john@collabspot.com"</span><span style="color: #CCCCB7;">)</span>
+     <span style="color: #CCCCB7;">(</span>smtpmail-smtp-user <span style="color: #b85c57;">"john@collabspot.com"</span><span style="color: #CCCCB7;">)</span>
+     <span style="color: #CCCCB7;">(</span>smtpmail-default-smtp-server <span style="color: #b85c57;">"smtp.gmail.com"</span><span style="color: #CCCCB7;">)</span>
+     <span style="color: #CCCCB7;">(</span>smtpmail-smtp-server <span style="color: #b85c57;">"smtp.gmail.com"</span><span style="color: #CCCCB7;">)</span>
+     <span style="color: #CCCCB7;">(</span>smtpmail-stream-type starttls<span style="color: #CCCCB7;">)</span>
+     <span style="color: #CCCCB7;">(</span>smtpmail-smtp-service 587<span style="color: #CCCCB7;">))</span>
+    <span style="color: #CCCCB7;">(</span><span style="color: #b85c57;">"prospecthive"</span>
+     <span style="color: #CCCCB7;">(</span>mu4e-sent-folder <span style="color: #b85c57;">"/prospecthive/[Gmail]/Sent Mail"</span><span style="color: #CCCCB7;">)</span>
+     <span style="color: #CCCCB7;">(</span>mu4e-drafts-folder <span style="color: #b85c57;">"/prospecthive/drafts"</span><span style="color: #CCCCB7;">)</span>
+     <span style="color: #CCCCB7;">(</span>mu4e-compose-signature <span style="color: #b85c57;">"prospecthive.com\nSent from GNU Emacs"</span><span style="color: #CCCCB7;">)</span>
+     <span style="color: #CCCCB7;">(</span>user-mail-address <span style="color: #b85c57;">"john@prospecthive.com"</span><span style="color: #CCCCB7;">)</span>
+     <span style="color: #CCCCB7;">(</span>smtpmail-smtp-user <span style="color: #b85c57;">"john@prospecthive.com"</span><span style="color: #CCCCB7;">)</span>
+     <span style="color: #CCCCB7;">(</span>smtpmail-default-smtp-server <span style="color: #b85c57;">"smtp.gmail.com"</span><span style="color: #CCCCB7;">)</span>
+     <span style="color: #CCCCB7;">(</span>smtpmail-smtp-server <span style="color: #b85c57;">"smtp.gmail.com"</span><span style="color: #CCCCB7;">)</span>
+     <span style="color: #CCCCB7;">(</span>smtpmail-stream-type starttls<span style="color: #CCCCB7;">)</span>
+     <span style="color: #CCCCB7;">(</span>smtpmail-smtp-service 587<span style="color: #CCCCB7;">))))</span>
+</pre>
+</div>
+
+<p>
+Function to select an account when composing an email.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span><span style="color: #989848;">defun</span> <span style="color: #282828; font-weight: bold;">my-mu4e-set-account</span> <span style="color: #CCCCB7;">()</span>
+  <span style="color: #40883f;">"Set the account for composing a message."</span>
+  <span style="color: #CCCCB7;">(</span><span style="color: #989848;">let*</span> <span style="color: #CCCCB7;">((</span>account
+          <span style="color: #CCCCB7;">(</span><span style="color: #989848;">if</span> mu4e-compose-parent-message
+              <span style="color: #CCCCB7;">(</span><span style="color: #989848;">let</span> <span style="color: #CCCCB7;">((</span>maildir <span style="color: #CCCCB7;">(</span>mu4e-message-field mu4e-compose-parent-message <span style="color: #282828; font-weight: bold;">:maildir</span><span style="color: #CCCCB7;">)))</span>
+                <span style="color: #CCCCB7;">(</span>string-match <span style="color: #b85c57;">"/</span><span style="color: #b85c57; font-weight: bold;">\\</span><span style="color: #b85c57; font-weight: bold;">(</span><span style="color: #b85c57;">.*?</span><span style="color: #b85c57; font-weight: bold;">\\</span><span style="color: #b85c57; font-weight: bold;">)</span><span style="color: #b85c57;">/"</span> maildir<span style="color: #CCCCB7;">)</span>
+                <span style="color: #CCCCB7;">(</span>match-string 1 maildir<span style="color: #CCCCB7;">))</span>
+            <span style="color: #CCCCB7;">(</span>completing-read <span style="color: #CCCCB7;">(</span>format <span style="color: #b85c57;">"Compose with account: (%s) "</span>
+                                     <span style="color: #CCCCB7;">(</span>mapconcat #'<span style="color: #CCCCB7;">(</span><span style="color: #989848;">lambda</span> <span style="color: #CCCCB7;">(</span>var<span style="color: #CCCCB7;">)</span> <span style="color: #CCCCB7;">(</span>car var<span style="color: #CCCCB7;">))</span>
+                                                my-mu4e-account-alist <span style="color: #b85c57;">"/"</span><span style="color: #CCCCB7;">))</span>
+                             <span style="color: #CCCCB7;">(</span>mapcar #'<span style="color: #CCCCB7;">(</span><span style="color: #989848;">lambda</span> <span style="color: #CCCCB7;">(</span>var<span style="color: #CCCCB7;">)</span> <span style="color: #CCCCB7;">(</span>car var<span style="color: #CCCCB7;">))</span> my-mu4e-account-alist<span style="color: #CCCCB7;">)</span>
+                             nil t nil nil <span style="color: #CCCCB7;">(</span>caar my-mu4e-account-alist<span style="color: #CCCCB7;">))))</span>
+         <span style="color: #CCCCB7;">(</span>account-vars <span style="color: #CCCCB7;">(</span>cdr <span style="color: #CCCCB7;">(</span>assoc account my-mu4e-account-alist<span style="color: #CCCCB7;">))))</span>
+    <span style="color: #CCCCB7;">(</span><span style="color: #989848;">if</span> account-vars
+        <span style="color: #CCCCB7;">(</span>mapc #'<span style="color: #CCCCB7;">(</span><span style="color: #989848;">lambda</span> <span style="color: #CCCCB7;">(</span>var<span style="color: #CCCCB7;">)</span>
+                  <span style="color: #CCCCB7;">(</span>set <span style="color: #CCCCB7;">(</span>car var<span style="color: #CCCCB7;">)</span> <span style="color: #CCCCB7;">(</span>cadr var<span style="color: #CCCCB7;">)))</span>
+              account-vars<span style="color: #CCCCB7;">)</span>
+      <span style="color: #CCCCB7;">(</span><span style="color: #b85c57; font-weight: bold;">error</span> <span style="color: #b85c57;">"No email account found"</span><span style="color: #CCCCB7;">))))</span>
+
+<span style="color: #CCCCB7;">(</span>add-hook 'mu4e-compose-pre-hook 'my-mu4e-set-account<span style="color: #CCCCB7;">)</span>
+
+<span style="color: #CCCCB7;">(</span>add-hook 'message-send-hook
+  <span style="color: #CCCCB7;">(</span><span style="color: #989848;">lambda</span> <span style="color: #CCCCB7;">()</span>
+    <span style="color: #CCCCB7;">(</span><span style="color: #989848;">unless</span> <span style="color: #CCCCB7;">(</span>yes-or-no-p <span style="color: #b85c57;">"Are you sure you want to send this?"</span><span style="color: #CCCCB7;">)</span>
+      <span style="color: #CCCCB7;">(</span><span style="color: #b85c57; font-weight: bold;">signal</span> 'quit nil<span style="color: #CCCCB7;">))))</span>
+</pre>
+</div>
+
+<p>
+Define some shortcuts to common folders.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span>setq mu4e-maildir-shortcuts
+    '<span style="color: #CCCCB7;">((</span><span style="color: #b85c57;">"/personal/INBOX"</span>               . ?j<span style="color: #CCCCB7;">)</span>
+      <span style="color: #CCCCB7;">(</span><span style="color: #b85c57;">"/collabspot/INBOX"</span>             . ?c<span style="color: #CCCCB7;">)</span>
+      <span style="color: #CCCCB7;">(</span><span style="color: #b85c57;">"/prospecthive/INBOX"</span>           . ?p<span style="color: #CCCCB7;">)))</span>
+</pre>
+</div>
+
+<p>
+Define bookmarks.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span>add-to-list 'mu4e-bookmarks
+  '<span style="color: #CCCCB7;">((</span>concat <span style="color: #b85c57;">"maildir:/personal/[Gmail]/\"Sent Mail\" AND date:3d..now"</span>
+            <span style="color: #b85c57;">" OR maildir:/prospecthive/[Gmail]/\"Sent Mail\" AND date:3d..now"</span>
+            <span style="color: #b85c57;">" OR maildir:/collabspot/[Gmail]/\"Sent Mail\" AND date:3d..now"</span><span style="color: #CCCCB7;">)</span> <span style="color: #b85c57;">"Recent sent mail"</span> ?s<span style="color: #CCCCB7;">))</span>
+
+<span style="color: #CCCCB7;">(</span>add-to-list 'mu4e-bookmarks
+  '<span style="color: #CCCCB7;">((</span>concat <span style="color: #b85c57;">"maildir:/personal/[Gmail]/\"All Mail\" AND date:3d..now"</span>
+            <span style="color: #b85c57;">" OR maildir:/prospecthive/[Gmail]/\"All Mail\" AND date:3d..now"</span>
+            <span style="color: #b85c57;">" OR maildir:/collabspot/[Gmail]/\"All Mail\" AND date:3d..now"</span><span style="color: #CCCCB7;">)</span> <span style="color: #b85c57;">"Recent all mail"</span> ?a<span style="color: #CCCCB7;">))</span>
+
+<span style="color: #CCCCB7;">(</span>add-to-list 'mu4e-bookmarks
+  '<span style="color: #CCCCB7;">((</span>concat <span style="color: #b85c57;">"maildir:/personal/INBOX AND date:3d..now"</span>
+            <span style="color: #b85c57;">" OR maildir:/prospecthive/INBOX AND date:3d..now"</span>
+            <span style="color: #b85c57;">" OR maildir:/collabspot/INBOX AND date:3d..now"</span><span style="color: #CCCCB7;">)</span> <span style="color: #b85c57;">"Recent inbox"</span> ?3<span style="color: #CCCCB7;">))</span>
+
+<span style="color: #CCCCB7;">(</span>add-to-list 'mu4e-bookmarks
+  '<span style="color: #CCCCB7;">(</span><span style="color: #b85c57;">"flag:flagged"</span> <span style="color: #b85c57;">"Flagged"</span> ?f<span style="color: #CCCCB7;">))</span>
+
+<span style="color: #CCCCB7;">(</span>add-to-list 'mu4e-bookmarks
+  '<span style="color: #CCCCB7;">((</span>concat <span style="color: #b85c57;">"maildir:/personal/INBOX AND date:today..now"</span>
+            <span style="color: #b85c57;">" OR maildir:/prospecthive/INBOX AND date:today..now"</span>
+            <span style="color: #b85c57;">" OR maildir:/collabspot/INBOX AND date:today..now"</span><span style="color: #CCCCB7;">)</span> <span style="color: #b85c57;">"Today's inbox"</span> ?i<span style="color: #CCCCB7;">))</span>
+</pre>
+</div>
+
+<p>
+Define custom headers.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span>add-to-list 'mu4e-header-info-custom
+  '<span style="color: #CCCCB7;">(</span><span style="color: #282828; font-weight: bold;">:important</span> . <span style="color: #CCCCB7;">(</span><span style="color: #282828; font-weight: bold;">:name</span> <span style="color: #b85c57;">"Important"</span>
+                  <span style="color: #282828; font-weight: bold;">:shortname</span> <span style="color: #b85c57;">"Impt"</span>
+                  <span style="color: #282828; font-weight: bold;">:help</span> <span style="color: #b85c57;">"Tagged as important by Gmail"</span>
+                  <span style="color: #282828; font-weight: bold;">:function</span>
+                  <span style="color: #CCCCB7;">(</span><span style="color: #989848;">lambda</span> <span style="color: #CCCCB7;">(</span>msg<span style="color: #CCCCB7;">)</span>
+                    <span style="color: #CCCCB7;">(</span><span style="color: #989848;">if</span> <span style="color: #CCCCB7;">(</span>member <span style="color: #b85c57;">"\\Important"</span> <span style="color: #CCCCB7;">(</span>mu4e-message-field msg <span style="color: #282828; font-weight: bold;">:tags</span><span style="color: #CCCCB7;">))</span>
+                        <span style="color: #b85c57;">"*"</span>
+                      <span style="color: #b85c57;">" "</span><span style="color: #CCCCB7;">)))))</span>
+
+<span style="color: #CCCCB7;">(</span>add-to-list
+ 'mu4e-header-info-custom
+ '<span style="color: #CCCCB7;">(</span><span style="color: #282828; font-weight: bold;">:account</span> . <span style="color: #CCCCB7;">(</span><span style="color: #282828; font-weight: bold;">:name</span> <span style="color: #b85c57;">"Account"</span>
+               <span style="color: #282828; font-weight: bold;">:shortname</span> <span style="color: #b85c57;">"Acct"</span>
+               <span style="color: #282828; font-weight: bold;">:help</span> <span style="color: #b85c57;">"Account name"</span>
+               <span style="color: #282828; font-weight: bold;">:function</span>
+               <span style="color: #CCCCB7;">(</span><span style="color: #989848;">lambda</span> <span style="color: #CCCCB7;">(</span>msg<span style="color: #CCCCB7;">)</span>
+                 <span style="color: #CCCCB7;">(</span><span style="color: #989848;">let</span> <span style="color: #CCCCB7;">((</span>maildir <span style="color: #CCCCB7;">(</span>mu4e-message-field msg <span style="color: #282828; font-weight: bold;">:maildir</span><span style="color: #CCCCB7;">)))</span>
+                   <span style="color: #CCCCB7;">(</span><span style="color: #989848;">cl-flet</span> <span style="color: #CCCCB7;">((</span>starts-with <span style="color: #CCCCB7;">(</span>s begins<span style="color: #CCCCB7;">)</span>
+                                          <span style="color: #CCCCB7;">(</span><span style="color: #989848;">cond</span> <span style="color: #CCCCB7;">((</span>&gt;= <span style="color: #CCCCB7;">(</span>length s<span style="color: #CCCCB7;">)</span> <span style="color: #CCCCB7;">(</span>length begins<span style="color: #CCCCB7;">))</span>
+                                             <span style="color: #CCCCB7;">(</span>string-equal <span style="color: #CCCCB7;">(</span>substring s 0 <span style="color: #CCCCB7;">(</span>length begins<span style="color: #CCCCB7;">))</span>
+                                                           begins<span style="color: #CCCCB7;">))</span>
+                                                <span style="color: #CCCCB7;">(</span>t nil<span style="color: #CCCCB7;">))))</span>
+                     <span style="color: #CCCCB7;">(</span><span style="color: #989848;">cond</span> <span style="color: #CCCCB7;">((</span>starts-with maildir <span style="color: #b85c57;">"/collabspot"</span><span style="color: #CCCCB7;">)</span> <span style="color: #b85c57;">"collabspot"</span><span style="color: #CCCCB7;">)</span>
+                           <span style="color: #CCCCB7;">((</span>starts-with maildir <span style="color: #b85c57;">"/prospecthive"</span><span style="color: #CCCCB7;">)</span> <span style="color: #b85c57;">"prospecthive"</span><span style="color: #CCCCB7;">)</span>
+                           <span style="color: #CCCCB7;">(</span>t <span style="color: #b85c57;">"personal"</span><span style="color: #CCCCB7;">))))))))</span>
+
+<span style="color: #CCCCB7;">(</span>setq mu4e-headers-fields '<span style="color: #CCCCB7;">((</span><span style="color: #282828; font-weight: bold;">:human-date</span> . 12<span style="color: #CCCCB7;">)</span>
+                            <span style="color: #CCCCB7;">(</span><span style="color: #282828; font-weight: bold;">:account</span> . 10<span style="color: #CCCCB7;">)</span>
+                            <span style="color: #CCCCB7;">(</span><span style="color: #282828; font-weight: bold;">:flags</span> . 6<span style="color: #CCCCB7;">)</span>
+                            <span style="color: #CCCCB7;">(</span><span style="color: #282828; font-weight: bold;">:important</span> . 4<span style="color: #CCCCB7;">)</span>
+                            <span style="color: #CCCCB7;">(</span><span style="color: #282828; font-weight: bold;">:mailing-list</span> . 10<span style="color: #CCCCB7;">)</span>
+                            <span style="color: #CCCCB7;">(</span><span style="color: #282828; font-weight: bold;">:from-or-to</span> . 22<span style="color: #CCCCB7;">)</span>
+                            <span style="color: #CCCCB7;">(</span><span style="color: #282828; font-weight: bold;">:subject</span><span style="color: #CCCCB7;">)))</span>
+</pre>
+</div>
+
+<p>
+Improve rendering of HTML only emails.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span><span style="color: #989848;">require</span> '<span style="color: #989848; font-weight: bold;">mu4e-contrib</span><span style="color: #CCCCB7;">)</span>
+<span style="color: #CCCCB7;">(</span>setq mu4e-html2text-command 'mu4e-shr2text<span style="color: #CCCCB7;">)</span>
+</pre>
+</div>
+
+<p>
+Enable org-mode support when writing emails, so we can send pretty HTML emails.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span><span style="color: #989848;">require</span> '<span style="color: #989848; font-weight: bold;">org-mu4e</span><span style="color: #CCCCB7;">)</span>
+<span style="color: #CCCCB7;">(</span>setq org-mu4e-convert-to-html t<span style="color: #CCCCB7;">)</span>
+
+<span style="color: #40883f;">;; </span><span style="color: #40883f;">when composing an email, switch on the special mu4e/orgmode mode</span>
+<span style="color: #CCCCB7;">(</span>define-key mu4e-compose-mode-map <span style="color: #CCCCB7;">(</span>kbd <span style="color: #b85c57;">"C-c o"</span><span style="color: #CCCCB7;">)</span> 'org~mu4e-mime-switch-headers-or-body<span style="color: #CCCCB7;">)</span>
+</pre>
+</div>
+
+<p>
+Use dired to select and attach files. To attach a file to a message, press <code>C-x C-d</code> when
+composing a message (this opens dired) then navigate to the file you want to attach. Then
+press <code>C-c RET C-a y</code> to attach the highlighted file. You can also mark multiple files
+to attach them.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span><span style="color: #989848;">require</span> '<span style="color: #989848; font-weight: bold;">gnus-dired</span><span style="color: #CCCCB7;">)</span>
+<span style="color: #40883f;">;; </span><span style="color: #40883f;">make the `</span><span style="color: #989848; font-weight: bold;">gnus-dired-mail-buffers</span><span style="color: #40883f;">' function also work on</span>
+<span style="color: #40883f;">;; </span><span style="color: #40883f;">message-mode derived modes, such as mu4e-compose-mode</span>
+<span style="color: #CCCCB7;">(</span><span style="color: #989848;">defun</span> <span style="color: #282828; font-weight: bold;">gnus-dired-mail-buffers</span> <span style="color: #CCCCB7;">()</span>
+  <span style="color: #40883f;">"Return a list of active message buffers."</span>
+  <span style="color: #CCCCB7;">(</span><span style="color: #989848;">let</span> <span style="color: #CCCCB7;">(</span>buffers<span style="color: #CCCCB7;">)</span>
+    <span style="color: #CCCCB7;">(</span><span style="color: #989848;">save-current-buffer</span>
+      <span style="color: #CCCCB7;">(</span><span style="color: #989848;">dolist</span> <span style="color: #CCCCB7;">(</span>buffer <span style="color: #CCCCB7;">(</span>buffer-list t<span style="color: #CCCCB7;">))</span>
+        <span style="color: #CCCCB7;">(</span>set-buffer buffer<span style="color: #CCCCB7;">)</span>
+        <span style="color: #CCCCB7;">(</span><span style="color: #989848;">when</span> <span style="color: #CCCCB7;">(</span>and <span style="color: #CCCCB7;">(</span>derived-mode-p 'message-mode<span style="color: #CCCCB7;">)</span>
+                <span style="color: #CCCCB7;">(</span>null message-sent-message-via<span style="color: #CCCCB7;">))</span>
+          <span style="color: #CCCCB7;">(</span>push <span style="color: #CCCCB7;">(</span>buffer-name buffer<span style="color: #CCCCB7;">)</span> buffers<span style="color: #CCCCB7;">))))</span>
+    <span style="color: #CCCCB7;">(</span>nreverse buffers<span style="color: #CCCCB7;">)))</span>
+
+<span style="color: #CCCCB7;">(</span>setq gnus-dired-mail-mode 'mu4e-user-agent<span style="color: #CCCCB7;">)</span>
+<span style="color: #CCCCB7;">(</span>add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode<span style="color: #CCCCB7;">)</span>
+</pre>
+</div>
+
+<p>
+Interactive function to switch to a frame dedicated for mu4e.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span><span style="color: #989848;">defun</span> <span style="color: #282828; font-weight: bold;">my-mu4e-frame</span> <span style="color: #CCCCB7;">()</span>
+  <span style="color: #40883f;">"Switch or create to a frame called 'mu4e' and connect to IRC"</span>
+  <span style="color: #CCCCB7;">(</span>interactive<span style="color: #CCCCB7;">)</span>
+  <span style="color: #CCCCB7;">(</span>nameframe-with-frame <span style="color: #b85c57;">"mu4e"</span>
+    <span style="color: #CCCCB7;">(</span>persp-switch <span style="color: #b85c57;">"mu4e"</span><span style="color: #CCCCB7;">)</span>
+    <span style="color: #CCCCB7;">(</span>mu4e<span style="color: #CCCCB7;">)))</span>
+</pre>
+</div>
+
+<p>
+Show unread emails in mode-line (via <code>mu4e-alert</code> package).
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span><span style="color: #989848;">require</span> '<span style="color: #989848; font-weight: bold;">mu4e-alert</span><span style="color: #CCCCB7;">)</span>
+<span style="color: #CCCCB7;">(</span>setq mu4e-alert-interesting-mail-query
+      <span style="color: #CCCCB7;">(</span>concat <span style="color: #b85c57;">"(maildir:/personal/INBOX AND date:today..now"</span>
+              <span style="color: #b85c57;">" OR maildir:/prospecthive/INBOX AND date:today..now"</span>
+              <span style="color: #b85c57;">" OR maildir:/collabspot/INBOX AND date:today..now)"</span>
+              <span style="color: #b85c57;">" AND flag:unread"</span><span style="color: #CCCCB7;">))</span>
+<span style="color: #CCCCB7;">(</span>add-hook 'after-init-hook #'mu4e-alert-enable-mode-line-display<span style="color: #CCCCB7;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline52" class="outline-3">
+<h3 id="orgheadline52">Ledger</h3>
+<div class="outline-text-3" id="text-orgheadline52">
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span><span style="color: #989848;">defconst</span> <span style="color: #4fa8a8;">*ledger-journal-path*</span> <span style="color: #b85c57;">"~/Dropbox/ledger/john.ledger"</span><span style="color: #CCCCB7;">)</span>
@@ -1789,24 +2117,23 @@ Render smiley icons, because why not <code>:-)</code>?
 <span style="color: #40883f;">;; </span><span style="color: #40883f;">in a xact if it is cleared/pending</span>
 <span style="color: #CCCCB7;">(</span>setq ledger-fontify-xact-state-overrides nil<span style="color: #CCCCB7;">)</span>
 
-<span style="color: #CCCCB7;">(</span><span style="color: #989848;">defun</span> <span style="color: #282828; font-weight: bold;">ledger-open-my-journal</span> <span style="color: #CCCCB7;">()</span>
+<span style="color: #CCCCB7;">(</span><span style="color: #989848;">defun</span> <span style="color: #282828; font-weight: bold;">my-ledger-frame</span> <span style="color: #CCCCB7;">()</span>
   <span style="color: #40883f;">"Easy way to open my ledger journal"</span>
   <span style="color: #CCCCB7;">(</span>interactive<span style="color: #CCCCB7;">)</span>
-  <span style="color: #CCCCB7;">(</span>find-file *ledger-journal-path*<span style="color: #CCCCB7;">))</span>
-</pre>
-</div>
+  <span style="color: #CCCCB7;">(</span>nameframe-with-frame <span style="color: #b85c57;">"ledger"</span>
+    <span style="color: #CCCCB7;">(</span>persp-switch <span style="color: #b85c57;">"ledger"</span><span style="color: #CCCCB7;">)</span>
+    <span style="color: #CCCCB7;">(</span>find-file *ledger-journal-path*<span style="color: #CCCCB7;">)))</span>
 
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span style="color: #CCCCB7;">(</span><span style="color: #989848;">with-eval-after-load</span> 'flycheck
+<span style="color: #CCCCB7;">(</span><span style="color: #989848;">with-eval-after-load</span> 'flycheck
   <span style="color: #CCCCB7;">(</span><span style="color: #989848;">require</span> '<span style="color: #989848; font-weight: bold;">flycheck-ledger</span><span style="color: #CCCCB7;">))</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline52" class="outline-3">
-<h3 id="orgheadline52">Evil</h3>
-<div class="outline-text-3" id="text-orgheadline52">
+
+<div id="outline-container-orgheadline53" class="outline-3">
+<h3 id="orgheadline53">Evil</h3>
+<div class="outline-text-3" id="text-orgheadline53">
 <p>
 Evil is <a href="https://bitbucket.org/lyro/evil/issues/544/disparity-between-local-and-global-mode">meant to be enabled globally</a>.
 </p>
@@ -1955,7 +2282,7 @@ Copied from <a href="http://doc.rix.si/org/fsem.html">http://doc.rix.si/org/fsem
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: John Del Rosario</p>
-<p class="date">Created: 2015-10-01 Thu 20:58</p>
+<p class="date">Created: 2015-12-02 Wed 13:36</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
