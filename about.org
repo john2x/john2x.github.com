@@ -1,0 +1,5 @@
+#+SETUPFILE: org-templates/level-0-page.org
+#+TITLE: about
+
+- Python, Emacs, Lisp, Clojure, etc.
+- Projects on [[https://github.com/john2x][Github]] and [[https://bitbucket.org/john2x][Bitbucket]]

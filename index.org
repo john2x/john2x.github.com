@@ -1,0 +1,9 @@
+#+TITLE: John Louis Del Rosario
+
+   + blog
+     + [[file:blog/clojure-destructuring.org][Clojure Destructuring Tutorial and Cheat Sheet]]
+     + [[file:blog/climate-change.org][Climate Change]]
+   + [[file:about.org][about]]
+
+#+OPTIONS: html-preamble:nil
+#+SUBTITLE: a.k.a. john2x

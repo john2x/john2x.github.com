@@ -1,0 +1,32 @@
+#+OPTIONS: html-link-use-abs-url:nil
+#+OPTIONS: html-scripts:t html-style:t
+#+OPTIONS: html5-fancy:nil tex:t
+#+HTML_DOCTYPE: html5
+#+HTML_CONTAINER: div
+#+DESCRIPTION:
+#+KEYWORDS:
+#+HTML_LINK_HOME: http://www.john2x.com
+#+HTML_LINK_UP: /
+#+HTML_MATHJAX:
+#+HTML_HEAD:
+#+HTML_HEAD_EXTRA:
+#+INFOJS_OPT:
+#+CREATOR: <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.3.4)
+#+LATEX_HEADER:
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:nil c:nil creator:t d:(not "LOGBOOK") date:nil e:t
+#+OPTIONS: email:nil f:t inline:t num:nil p:nil pri:nil prop:nil stat:t
+#+OPTIONS: tags:t tasks:t tex:t timestamp:t title:t toc:nil todo:t |:t
+#+AUTHOR: John Del Rosario
+#+EMAIL: john2x@gmail.com
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+HTML_HEAD_EXTRA: <style>.outline-3, .outline-4, .outline-5 { padding-left: 2em; };</style>
+#+HTML_HEAD_EXTRA: <style>#table-of-contents { float: right; border: 1px solid; overflow: auto; font-size: 14px; position: fixed; right: 0; top: 24px; background: white; z-index: 999; max-height: 80%; }</style>
+#+HTML_HEAD_EXTRA: <style>#table-of-contents h2 { font-size: 14px; padding: 10px; }</style>
+#+HTML_HEAD_EXTRA: <style>#table-of-contents:hover #text-table-of-contents { display: block; }</style>
+#+HTML_HEAD_EXTRA: <style>#text-table-of-contents { display: none }</style>
+#+HTML_HEAD_EXTRA: <style>#text-table-of-contents ul { padding-left: 20px }</style>
+#+HTML_HEAD_EXTRA: <style>code { border: 1px solid lightgrey; background: #FFFFE9; padding: 2px}</style>
+#+HTML_HEAD_EXTRA: <style>pre.src { background: #FFFFE9 }</style>
