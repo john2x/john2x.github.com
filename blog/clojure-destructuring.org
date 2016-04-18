@@ -2,6 +2,17 @@
 #+TITLE: Clojure Destructuring Tutorial and Cheat Sheet
 #+DATE: 2014-07-26
 #+KEYWORDS: clojure
+#+BEGIN_HTML
+---
+title: Clojure Destructuring Tutorial and Cheat Sheet
+date: 2014-7-26
+permalink: /blog/clojure-destructuring.html
+layout: post
+published: true
+category: blog
+tags: clojure
+---
+#+END_HTML
 
 
 When I try to write or read some Clojure code, every now and then I
